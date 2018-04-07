@@ -1,0 +1,9 @@
+{
+    "terminal.external.linuxExec": "xterm",
+    "telemetry.enableTelemetry": false,
+    "workbench.colorTheme": "Monokai",
+    "vim.enableNeovim": true,
+    "vim.disableAnnoyingNeovimMessage": true,
+    "editor.fontSize": 18,
+    "editor.fontFamily": "'Inconsolata'"
+}

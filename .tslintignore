@@ -1,0 +1,7 @@
+plugins/**/node_modules
+node_modules
+bower_components
+.git
+coverage
+plugins/newline/lib
+.baseDir.ts
