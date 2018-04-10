@@ -34,7 +34,7 @@ conky.config = {
 	gap_x = 20,
 	gap_y = 50,
 	minimum_width = 300,
-  minimum_height = 600,
+        minimum_height = 600,
 	alignment = 'top_right',
 
 -- Graph
@@ -98,9 +98,6 @@ ${color2}${top_mem name 4}${color}$alignr${top cpu 4} %
 ${color2}${top_mem name 5}${color}$alignr${top cpu 5} %
 ${color2}${top_mem name 6}${color}$alignr${top cpu 6} %
 ${color2}${top_mem name 7}${color}$alignr${top cpu 7} %
-${color2}${top_mem name 8}${color}$alignr${top cpu 8} %
-${color2}${top_mem name 9}${color}$alignr${top cpu 9} %
-${color2}${top_mem name 10}${color}$alignr${top cpu 10} %
 
 ${color1}Proc${color}$alignr${color1}${color1}Mem${color}
 ${color2}${top_mem name 1}${color}$alignr${top_mem mem_res 1}
@@ -110,7 +107,4 @@ ${color2}${top_mem name 4}${color}$alignr${top_mem mem_res 4}
 ${color2}${top_mem name 5}${color}$alignr${top_mem mem_res 5}
 ${color2}${top_mem name 6}${color}$alignr${top_mem mem_res 6}
 ${color2}${top_mem name 7}${color}$alignr${top_mem mem_res 7}
-${color2}${top_mem name 8}${color}$alignr${top_mem mem_res 8}
-${color2}${top_mem name 9}${color}$alignr${top_mem mem_res 9}
-${color2}${top_mem name 10}${color}$alignr${top_mem mem_res 10}
 ]];
