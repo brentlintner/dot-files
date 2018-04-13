@@ -2,7 +2,7 @@ conky.config = {
 -- General
 	use_xft = true,
 	xftalpha = .5,
-	font = 'Cantarel:size=11',
+	font = 'DejaVu Sans:size=11',
 	override_utf8_locale = true,
 	background = false,
 	update_interval = 2,
