@@ -10,7 +10,6 @@ alias ncu="npm-check-updates"
 
 alias pacman="pacman --color always"
 alias pa="trizen"
-alias paa="pacman"
 alias pa-updates='pa -Qu --color always'
 alias pa-installed='pa -Qn --color always'
 alias pa-installed-aur='pa -Qm --color always'
@@ -45,7 +44,6 @@ alias la='ls -la --color=auto'
 alias ls='ls --color=auto'
 
 alias for-each="bin/for-each"
-alias replace-all-in="bin/replace-all-in"
 alias git-for-each="bin/git-for-each"
 alias backup-user="deja-dup --backup"
 alias backup-music="bin/sync-music.sh"
