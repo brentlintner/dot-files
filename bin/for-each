@@ -11,12 +11,16 @@ usage() {
 }
 
 run() {
+  if [ "$dir" = "-h" ]; then
+    usage; exit 0;
+  fi
+
   if [ -z "${dir}" ]; then
-    echo "directory is empty\n"; usage; exit 1;
+    echo "directory is empty"; exit 1;
   fi
 
   if [ -z "${cmd}" ]; then
-    echo "command is empty\n"; usage; exit 1;
+    echo "command is empty"; exit 1;
   fi
 
   cwd=$(pwd)

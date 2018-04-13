@@ -1,0 +1,33 @@
+#!/usr/bin/env sh
+
+from_path=$1
+ssh_folder=$2
+ssh_url="brent@bmacmini:/Volumes/backup/bnixbook-"
+ssh_opts="ssh -o Compression=no"
+
+set -e
+
+usage() {
+  echo "backup-path [-h] path ssh_folder"
+  echo "  => Recursively backup [path] to [images,music,vms-backup]";
+}
+
+run() {
+  if [ "$from_path" = "-h" ]; then
+    usage; exit 0;
+  fi
+
+  if [ -z "$from_path" ]; then
+    echo "path is empty"; exit 1;
+  fi
+
+  if [ -z "$ssh_folder" ]; then
+    echo "ssh_folder is empty"; exit 1;
+  fi
+
+  echo "connecting to $ssh_url$ssh_folder..."
+
+  rsync -e "$ssh_opts" -h -r -t -v --progress $from_path "$ssh_url$ssh_folder"
+}
+
+run
