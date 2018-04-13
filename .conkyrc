@@ -2,7 +2,7 @@ conky.config = {
 -- General
 	use_xft = true,
 	xftalpha = .5,
-	font = 'DejaVu Sans:size=11',
+	font = 'Cantarel:size=11',
 	override_utf8_locale = true,
 	background = false,
 	update_interval = 2,
@@ -24,18 +24,17 @@ conky.config = {
 
 -- Window
 	own_window = true,
-	own_window_type = 'desktop',
+	own_window_type = 'normal',
 	own_window_argb_visual = true,
 	own_window_argb_value = 255,
 	own_window_transparent = true,
 	own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
 
 	alignment = 'top_right',
-	gap_x = 20,
-	gap_y = 50,
+	gap_x = 30,
+	gap_y = 30,
 	minimum_width = 300,
-        minimum_height = 600,
-	alignment = 'top_right',
+	minimum_height = 600,
 
 -- Graph
 	draw_shades = false,
@@ -50,14 +49,18 @@ conky.config = {
 };
 
 conky.text = [[
-$alignc$nodename@$kernel
-
+System $alignr$nodename@${execi 120 uname -r | sed 's/\-manjaro//i'}
+Time $alignr${time %H}:${time %M} EST
+Date $alignr${time %B} ${time %e}, ${time %Y}
+Users $alignr$user_names ($user_number)
 Uptime $alignr$uptime_short
-Procs $alignr$processes ($running_processes running)${if_existing $batter_time}
+Procs $alignr$processes ($running_processes running)${if_existing $battery}
+${if_existing $battery_time}
 Battery $alignr${battery} $battery_time
 ${else}
 Battery $alignr${battery}
-${endif}Load $alignr$loadavg
+${endif}${else}${endif}
+Load $alignr$loadavg
 
 Root $alignr${fs_used /}/${fs_size /} (${fs_used_perc /}%)
 Boot $alignr${fs_used /boot/efi}/${fs_size /boot/efi} (${fs_used_perc /boot/efi}%)
@@ -67,7 +70,6 @@ ${cpugraph 26,300 FFFFFF FFFFFF -l}
 Cpu $alignr${cpu}%
 Speed $alignr${freq} MHz
 
-#$alignr${exec sensors | grep -iE 'core\s|physical' | sed -e 's/(high.*//'}
 ${memgraph 26,300 FFFFFF FFFFFF -l}
 Mem$alignr$mem/$memmax ($memperc%)
 
@@ -96,8 +98,6 @@ ${color2}${top_mem name 2}${color}$alignr${top cpu 2} %
 ${color2}${top_mem name 3}${color}$alignr${top cpu 3} %
 ${color2}${top_mem name 4}${color}$alignr${top cpu 4} %
 ${color2}${top_mem name 5}${color}$alignr${top cpu 5} %
-${color2}${top_mem name 6}${color}$alignr${top cpu 6} %
-${color2}${top_mem name 7}${color}$alignr${top cpu 7} %
 
 ${color1}Proc${color}$alignr${color1}${color1}Mem${color}
 ${color2}${top_mem name 1}${color}$alignr${top_mem mem_res 1}
@@ -105,6 +105,4 @@ ${color2}${top_mem name 2}${color}$alignr${top_mem mem_res 2}
 ${color2}${top_mem name 3}${color}$alignr${top_mem mem_res 3}
 ${color2}${top_mem name 4}${color}$alignr${top_mem mem_res 4}
 ${color2}${top_mem name 5}${color}$alignr${top_mem mem_res 5}
-${color2}${top_mem name 6}${color}$alignr${top_mem mem_res 6}
-${color2}${top_mem name 7}${color}$alignr${top_mem mem_res 7}
 ]];

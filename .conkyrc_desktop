@@ -1,0 +1,112 @@
+conky.config = {
+-- General
+	use_xft = true,
+	xftalpha = .5,
+	font = 'Cantarel:size=11',
+	override_utf8_locale = true,
+	background = false,
+	update_interval = 2,
+	total_run_times = 0,
+	cpu_avg_samples = 5,
+	net_avg_samples = 5,
+	short_units = true,
+	pad_percents = 2,
+	top_name_width = 30,
+	uppercase = false,
+	text_buffer_size = 4096,
+	double_buffer = true,
+	imlib_cache_size = 10,
+
+-- Color scheme
+	default_color = '#D0D0D0',
+	color1 = '#FFFFFF',
+	color2 = '#FFFFFF',
+
+-- Window
+	own_window = true,
+	own_window_type = 'normal',
+	own_window_argb_visual = true,
+	own_window_argb_value = 255,
+	own_window_transparent = true,
+	own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+
+	alignment = 'top_right',
+	gap_x = 40,
+	gap_y = 40,
+	minimum_width = 300,
+	minimum_height = 600,
+
+-- Graph
+	draw_shades = false,
+	default_shade_color = '#FFFFFF',
+	draw_outline = false,
+  default_bar_height = 80,
+	default_outline_color = '#FFFFFF',
+	draw_borders = false,
+	draw_graph_borders = false,
+	default_graph_width = 300,
+  default_graph_height = 26,
+};
+
+conky.text = [[
+System $alignr$nodename@${execi 120 uname -r | sed 's/\-manjaro//i'}
+Time $alignr${time %H}:${time %M} EST
+Date $alignr${time %B} ${time %e}, ${time %Y}
+Users $alignr$user_names ($user_number)
+Uptime $alignr$uptime_short
+Procs $alignr$processes ($running_processes running)${if_existing $battery}
+${if_existing $battery_time}
+Battery $alignr${battery} $battery_time
+${else}
+Battery $alignr${battery}
+${endif}${else}${endif}
+Load $alignr$loadavg
+
+Root $alignr${fs_used /}/${fs_size /} (${fs_used_perc /}%)
+Boot $alignr${fs_used /boot/efi}/${fs_size /boot/efi} (${fs_used_perc /boot/efi}%)
+Home $alignr${fs_used /home}/${fs_size /home} (${fs_used_perc /home}%)
+Swap $alignr$swap/$swapmax ($swapperc%)
+${cpugraph 26,300 FFFFFF FFFFFF -l}
+Cpu $alignr${cpu}%
+Core1 $alignr${execi 5 sensors | grep 'Core 0' | cut -c15-18 | sed -E 's/\+//'}°C
+Core2 $alignr${execi 5 sensors | grep 'Core 1' | cut -c15-18 | sed -E 's/\+//'}°C
+Core3 $alignr${execi 5 sensors | grep 'Core 2' | cut -c15-18 | sed -E 's/\+//'}°C
+Core4 $alignr${execi 5 sensors | grep 'Core 3' | cut -c15-18 | sed -E 's/\+//'}°C
+
+Mobo $alignr${hwmon temp 1}°C
+Fan1 $alignr${execi 2 sensors | grep 'fan1' | cut -c15-31}
+Fan2 $alignr${execi 2 sensors | grep 'fan2' | cut -c15-31}
+
+Gpu$alignr${execi 2 nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader,nounits}%
+Mem $alignr${execi 2 nvidia-smi --query-gpu=memory.used --format=csv,noheader,nounits}M/${execi 2 nvidia-smi --query-gpu=memory.total --format=csv,noheader,nounits}M
+#${execigraph "nvidia-settings -tq GPUUtilization | head -1 | awk -F '[,= ]' '{ print $2 }'"}
+Temp $alignr${execi 5 nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader,nounits}°C
+Fan $alignr${execi 2 nvidia-settings -tq GPUCurrentFanSpeedRPM} RPM (${execi 2 nvidia-settings -tq GPUCurrentFanSpeed}%)
+
+${memgraph 26,300 FFFFFF FFFFFF -l}
+Mem$alignr$mem/$memmax ($memperc%)
+
+${diskiograph 26,300 FFFFFF FFFFFF -l}
+Disk $alignr$hddtemp°C
+Read$alignr${diskio_read}
+Write$alignr${diskio_write}
+
+${if_existing /proc/net/route enp3s0}
+${upspeedgraph enp3s0 26,145 FFFFFF FFFFFF}$alignr${downspeedgraph enp3s0 26,145 FFFFFF FFFFFF}
+Up ${upspeed enp3s0}${alignr}Down ${downspeed enp3s0}
+Sent ${totalup enp3s0}${alignr}Received ${totaldown enp3s0}
+
+${color1}Proc$alignr${color1}Cpu %
+${top_mem name 1}$alignr${top cpu 1} %
+${top_mem name 2}$alignr${top cpu 2} %
+${top_mem name 3}$alignr${top cpu 3} %
+${top_mem name 4}$alignr${top cpu 4} %
+${top_mem name 5}$alignr${top cpu 5} %
+
+${color1}Proc$alignr${color1}${color1}Mem
+${top_mem name 1}$alignr${top_mem mem_res 1}
+${top_mem name 2}$alignr${top_mem mem_res 2}
+${top_mem name 3}$alignr${top_mem mem_res 3}
+${top_mem name 4}$alignr${top_mem mem_res 4}
+${top_mem name 5}$alignr${top_mem mem_res 5}
+]];
