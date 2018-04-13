@@ -20,5 +20,5 @@ ZSH_THEME="brent"
 plugins=(zsh-autosuggestions zsh-completions zsh-syntax-highlighting git rails heroku npm)
 source $ZSH/oh-my-zsh.sh
 
-source $HOME/src/dot-files/sh-env.sh
-source $HOME/src/dot-files/sh-aliases.sh
+source $HOME/.dot-files/sh-env.sh
+source $HOME/.dot-files/sh-aliases.sh

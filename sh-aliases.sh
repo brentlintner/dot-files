@@ -43,9 +43,9 @@ alias ll='ls -l --color=auto'
 alias la='ls -la --color=auto'
 alias ls='ls --color=auto'
 
-alias for-each="bin/for-each"
-alias git-for-each="bin/git-for-each"
+alias for-each="$HOME/.dot-files/bin/for-each"
+alias git-for-each="$HOME/.dot-files/bin/git-for-each"
 alias backup-user="deja-dup --backup"
-alias backup-path="bin/backup"
+alias backup-path="$HOME/.dot-files/bin/backup"
 alias vim-update-plugins="vim +PluginUpdate +qall"
 alias zsh-update-plugins=". $HOME/.oh-my-zsh/tools/check_for_upgrade.sh"

@@ -19,6 +19,4 @@ export EDITOR=vim
 export DEBFULLNAME="Brent Lintner"
 export DEBEMAIL="brent.lintner@gmail.com"
 
-# local node install (put before usr/bin, etc)
-export PATH=$HOME/.node/bin:$PATH
 export PATH="$PATH:$HOME/.composer/vendor/bin"
