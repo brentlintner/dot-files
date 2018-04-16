@@ -1,63 +1,63 @@
 [user]
-  name = Brent Lintner
-  email = brent.lintner@gmail.com
+	name = Brent Lintner
+	email = brent.lintner@gmail.com
 	signingkey = 196E9B681049F5ED
 
 [commit]
-  template = ~/.gitmessage
+	template = ~/.gitmessage
 	gpgsign = false
 
 [merge]
-  keepbackup = false
-  tool = meld
+	keepbackup = false
+	tool = meld
 
 [diff]
-  tool = meld
+	tool = meld
 
 [color]
-  branch = auto
-  diff = auto
-  status = auto
+	branch = auto
+	diff = auto
+	status = auto
 
 [color "branch"]
-  current = yellow reverse
-  local = yellow
-  remote = green
+	current = yellow reverse
+	local = yellow
+	remote = green
 
 [color "diff"]
-  meta = yellow bold
-  frag = magenta bold
-  old = red bold
-  new = green bold
+	meta = yellow bold
+	frag = magenta bold
+	old = red bold
+	new = green bold
 
 [color "status"]
-  added = yellow
-  changed = green
-  untracked = cyan
+	added = yellow
+	changed = green
+	untracked = cyan
 
 [alias]
-  l = "!git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
-  p = pull
-  s = status
-  cm = commit
-  br = branch
-  co = checkout
-  d = diff
-  a = add
-  re = rebase
-  pushf = push --force-with-lease
+	l = "!tig"
+	p = pull
+	s = status
+	cm = commit
+	br = branch
+	co = checkout
+	d = diff
+	a = add
+	re = rebase
+	pushf = push --force-with-lease
 [github]
-  user = brentlintner
+	user = brentlintner
 [rerere]
-  enabled = true
+	enabled = true
 [status]
-  showUntrackedFiles = all
+	showUntrackedFiles = all
 [achievement]
-  upload = true
+	upload = true
 [push]
 	default = current
 [core]
-  autocrlf = input
+	autocrlf = input
 	pager = less
 [pager]
-  branch = false
+	branch = false
