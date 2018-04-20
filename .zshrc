@@ -17,7 +17,15 @@ fi
 # load ohmyzsh (https://github.com/robbyrussell/oh-my-zsh)
 export ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="brent"
-plugins=(zsh-autosuggestions zsh-completions zsh-syntax-highlighting git rails heroku npm)
+plugins=(
+  zsh-autosuggestions
+  zsh-completions
+  zsh-syntax-highlighting
+  git
+  rails
+  heroku
+  npm
+)
 source $ZSH/oh-my-zsh.sh
 
 source $HOME/.dot-files/sh-env.sh
