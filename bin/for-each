@@ -3,8 +3,6 @@
 dir=$1
 cmd=$2
 
-set -e
-
 usage() {
   echo "for-each [-h] dir \"command...\""
   echo "  => run a command for each folder in dir";
