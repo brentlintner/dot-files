@@ -1,6 +1,6 @@
 # Dotfiles
 
-A collection of config and script files I commonly use for development.
+A collection of config/sh files I use for development on Arch, Debian, Fedora, macOS, WSL and other *nix based systems.
 
 # Screenshots
 
