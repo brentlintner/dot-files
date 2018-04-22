@@ -25,12 +25,11 @@ alias r="rspec"
 alias rr="spring rspec"
 alias nbuild="npm run compile -s"
 alias gitk="tig"
-alias git="hub"
 alias git-view-merged='git branch --merged | grep -v "\*"'
 alias git-delete-merged='git branch --merged | grep -v "\*" | xargs -n 1 git branch -d'
 alias g="git s"
 alias gl="git l"
-alias gpr="git pull-request"
+alias gpr="hub pull-request"
 
 alias static-server="python -m http.server 8000"
 alias tlp-mode="sudo tlp stat | grep -iE '^mode'"
