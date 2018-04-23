@@ -1,0 +1,147 @@
+#!/usr/bin/env bash
+
+set -xe
+
+OS=$(uname -s)
+
+# TODO: yum/zypper
+APT_PKGS="neovim python3 curl conky nodejs ruby redis postgresql terminator build-essential gnome-shell-extensions gnome-tweak-tool git fonts-dejavu fonts-inconsolata automake autoconf libreadline-dev libncurses-dev libssl-dev libyaml-dev libxslt-dev libffi-dev libtool unixodbc-dev"
+PAC_PKGS="neovim python3 curl conky nodejs ruby redis postgresql terminator base-devel gnome-shell-extensions git ttf-inconsolata ttf-dejavu gnome-tweaks"
+DNF_PKGS="neovim python3 curl conky nodejs ruby redis postgresql terminator gnome-tweak-tool gnome-shell-extension-user-theme git dejavu-sans-fonts levien-inconsolata-fonts automake autoconf readline-devel ncurses-devel openssl-devel libyaml-devel libxslt-devel libffi-devel libtool unixODBC-devel"
+BRW_PKGS="neovim nodejs ruby git redis postgresql font-inconsolata font-dejavu coreutils automake autoconf openssl libyaml readline libxslt libtool unixodbc"
+
+as_root() {
+  echo "root: $*"
+  if [ "$(id -u)" -eq 0 ]; then
+    "$@"
+  else
+    if [ ! -z "$(command -v sudo)" ]; then
+      sudo "$@"
+    elif [ ! -z "$(command -v su)" ]; then
+      su root -c "$*"
+    else
+      echo "Can't continue without sudo/su installed." && exit 1
+    fi
+  fi
+}
+
+check_packager() {
+  if [ ! -z "$(command -v pacman)" ]; then
+    PACKAGER="pacman"
+  elif [ ! -z "$(command -v zypper)" ]; then
+    PACKAGER="zypper"
+  elif [ ! -z "$(command -v dnf)" ]; then
+    PACKAGER="dnf"
+  elif [ ! -z "$(command -v yum)" ]; then
+    PACKAGER="yum"
+  elif [ ! -z "$(command -v apt)" ]; then
+    PACKAGER="apt"
+  elif [ "$OS" = "Darwin" ] && [ ! -z "$(command -v brew)" ]; then
+    PACKAGER="brew"
+  fi
+}
+
+install_asdf() {
+  if [ ! -d "$HOME/.asdf" ]; then
+    git clone https://github.com/asdf-vm/asdf.git "$HOME/.asdf" --branch v0.4.3
+  fi
+}
+
+install_pkgs() {
+  case $PACKAGER in
+    pacman)
+      as_root pacman --noconfirm -S yaourt
+      as_root yaourt --noconfirm -S trizen
+      as_root trizen --noconfirm -S $PAC_PKGS
+      ;;
+    dnf)
+      as_root dnf install -y $DNF_PKGS
+      ;;
+    apt)
+      as_root apt -y install $APT_PKGS
+      ;;
+    brew)
+      as_root brew tap caskroom/fonts
+      as_root brew install -y $BRW_PKGS
+      ;;
+    *)
+      echo "WARNING: Unknown pkg manager."
+      ;;
+  esac
+
+  if [ -z "$(command -v node)" ]; then
+    as_root ln -fs /usr/bin/nodejs /usr/bin/node
+  fi
+}
+
+install() {
+  install_pkgs
+  install_asdf
+
+  cd "$HOME"
+
+  # install ohmyzsh
+  rm -rf "$HOME/.oh-my-zsh"
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sed 's/^\s*env zsh$//g')"
+
+  # zsh theme
+  ln -sf "$HOME/.dot-files/brent.zsh-theme" "$HOME/.oh-my-zsh/themes/brent.zsh-theme"
+
+  # premake some dirs
+  mkdir -p "$HOME/.config"
+  mkdir -p "$HOME/.config/terminator"
+  mkdir -p "$HOME/.vscode"
+  mkdir -p "$HOME/.local/share/applications"
+  mkdir -p "$HOME/.config/Typora/conf"
+
+  # mimelist
+  ln -sf "$HOME/.dot-files/mimeapps.list" "$HOME/.config/mimeapps.list"
+  ln -sf "$HOME/.config/mimeapps.list" "$HOME/.local/share/applications/mimeapps.list"
+
+  # shell config
+  ln -sf "$HOME/.dot-files/.zshrc"
+  ln -sf "$HOME/.dot-files/.bashrc"
+
+  # misc config
+  ln -sf "$HOME/.dot-files/.ackrc"
+  ln -sf "$HOME/.dot-files/.conkyrc"
+  ln -sf "$HOME/.dot-files/.ctags"
+  ln -sf "$HOME/.dot-files/.editorconfig"
+  ln -sf "$HOME/.dot-files/.gitignore"
+  ln -sf "$HOME/.dot-files/.gitmessage"
+  ln -sf "$HOME/.dot-files/.gitconfig"
+
+  # terminator
+  ln -sf "$HOME/.dot-files/.terminator" "$HOME/.config/terminator/config"
+
+  # vscode
+  ln -sf "$HOME/.dot-files/vscode.config.json" "$HOME/.vscode/config.json"
+
+  # typora
+  ln -sf "$HOME/.dot-files/typora.user.conf.json" "$HOME/.config/Typora/conf/conf.user.json"
+
+  # vim config
+  rm -rf "$HOME/.vim-settings"
+  git clone https://github.com/brentlintner/vim-settings.git "$HOME/.vim-settings"
+  cd "$HOME/.vim-settings"
+  git submodule update --init
+  git submodule foreach git checkout master
+  cd - > /dev/null
+
+  ln -sf "$HOME/.vim-settings/.vimrc"
+  ln -sf "$HOME/.vim-settings/.vim"
+  ln -sf "$HOME/.vim-settings/.vim" "$HOME/.config/nvim"
+
+  vim +PluginInstall +qall
+  vim +UpdateRemotePlugins +qall
+
+  # force use nvim (after using vim to compile it)
+  as_root ln -fs /usr/bin/nvim /usr/bin/vim
+}
+
+main() {
+  check_packager
+  install
+}
+
+main
