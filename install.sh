@@ -5,10 +5,10 @@ set -xe
 OS=$(uname -s)
 
 # TODO: yum/zypper
-APT_PKGS="neovim python3 curl conky nodejs ruby redis postgresql terminator build-essential gnome-shell-extensions gnome-tweak-tool git fonts-dejavu fonts-inconsolata automake autoconf libreadline-dev libncurses-dev libssl-dev libyaml-dev libxslt-dev libffi-dev libtool unixodbc-dev"
-PAC_PKGS="neovim python3 curl conky nodejs ruby redis postgresql terminator base-devel gnome-shell-extensions git ttf-inconsolata ttf-dejavu gnome-tweaks"
-DNF_PKGS="neovim python3 curl conky nodejs ruby redis postgresql terminator gnome-tweak-tool gnome-shell-extension-user-theme git dejavu-sans-fonts levien-inconsolata-fonts automake autoconf readline-devel ncurses-devel openssl-devel libyaml-devel libxslt-devel libffi-devel libtool unixODBC-devel"
-BRW_PKGS="neovim nodejs ruby git redis postgresql font-inconsolata font-dejavu coreutils automake autoconf openssl libyaml readline libxslt libtool unixodbc"
+APT_PKGS="vim neovim python3 curl conky nodejs ruby redis postgresql terminator build-essential gnome-shell-extensions gnome-tweak-tool git fonts-dejavu fonts-inconsolata automake autoconf libreadline-dev libncurses-dev libssl-dev libyaml-dev libxslt-dev libffi-dev libtool unixodbc-dev"
+PAC_PKGS="vim neovim python3 curl conky nodejs ruby redis postgresql terminator base-devel gnome-shell-extensions git ttf-inconsolata ttf-dejavu gnome-tweaks"
+DNF_PKGS="vim neovim python3 curl conky nodejs ruby redis postgresql terminator gnome-tweak-tool gnome-shell-extension-user-theme git dejavu-sans-fonts levien-inconsolata-fonts automake autoconf readline-devel ncurses-devel openssl-devel libyaml-devel libxslt-devel libffi-devel libtool unixODBC-devel"
+BRW_PKGS="vim neovim nodejs ruby git redis postgresql font-inconsolata font-dejavu coreutils automake autoconf openssl libyaml readline libxslt libtool unixodbc"
 
 as_root() {
   echo "root: $*"
@@ -134,9 +134,6 @@ install() {
 
   vim +PluginInstall +qall
   vim +UpdateRemotePlugins +qall
-
-  # force use nvim (after using vim to compile it)
-  as_root ln -fs /usr/bin/nvim /usr/bin/vim
 }
 
 main() {
