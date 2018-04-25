@@ -4,7 +4,7 @@ A collection of config/sh files I use for development on Arch, Debian, Fedora, m
 
 # Install
 ```sh
-$ git clone https://github.com/brentlintner/dot-files.git > ~/.dot-files
+$ git clone https://github.com/brentlintner/dot-files.git ~/.dot-files
 $ cd ~/.dot-files
 $ ./install.sh
 $ env zsh # or env bash
