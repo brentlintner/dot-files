@@ -4,11 +4,13 @@ set -xe
 
 OS=$(uname -s)
 
-# TODO: yum/zypper
 APT_PKGS="zsh bash vim neovim python-neovim optipng python3 curl conky parallel nodejs ruby redis-server postgresql terminator build-essential gnome-shell-extensions gnome-tweak-tool git fonts-dejavu fonts-inconsolata automake autoconf libreadline-dev libncurses-dev libssl-dev libyaml-dev libxslt-dev libffi-dev libtool unixodbc-dev"
 PAC_PKGS="zsh bash vim neovim python-neovim optipng python3 curl conky parallel nodejs ruby redis postgresql terminator base-devel gnome-shell-extensions git ttf-inconsolata ttf-dejavu gnome-tweaks"
 DNF_PKGS="zsh bash vim neovim python-neovim optipng python3 curl conky parallel nodejs ruby redis postgresql terminator gnome-tweak-tool gnome-shell-extension-user-theme git dejavu-sans-fonts levien-inconsolata-fonts automake autoconf readline-devel ncurses-devel openssl-devel libyaml-devel libxslt-devel libffi-devel libtool unixODBC-devel"
 BRW_PKGS="zsh bash vim neovim nodejs parallel ruby git redis postgresql font-inconsolata font-dejavu coreutils automake autoconf openssl libyaml readline libxslt libtool unixodbc"
+# TODO: yum/zypper
+ZYP_PKGS="zsh bash vim neovim python-neovim python3 curl conky parallel nodejs ruby redis postgresql terminator gnome-tweak-tool gnome-shell-extension-user-theme git dejavu-sans-fonts levien-inconsolata-fonts automake autoconf readline-devel ncurses-devel openssl-devel libyaml-devel libxslt-devel libffi-devel libtool unixODBC-devel"
+YUM_PKGS="zsh bash vim neovim python-neovim python3 curl conky parallel nodejs ruby redis postgresql terminator gnome-tweak-tool gnome-shell-extension-user-theme git dejavu-sans-fonts levien-inconsolata-fonts automake autoconf readline-devel ncurses-devel openssl-devel libyaml-devel libxslt-devel libffi-devel libtool unixODBC-devel"
 
 as_root() {
   echo "root: $*"
@@ -55,7 +57,13 @@ install_pkgs() {
       as_root trizen --noconfirm -S $PAC_PKGS
       ;;
     dnf)
-      as_root dnf install -y $DNF_PKGS
+      as_root dnf -y install $DNF_PKGS
+      ;;
+    zypper)
+      as_root zypper -y install $ZYP_PKGS
+      ;;
+    yum)
+      as_root yum -y install $YUM_PKGS
       ;;
     apt)
       as_root apt -y install $APT_PKGS
