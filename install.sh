@@ -53,8 +53,7 @@ install_pkgs() {
   case $PACKAGER in
     pacman)
       as_root pacman --noconfirm -S yaourt
-      as_root yaourt --noconfirm -S trizen
-      as_root trizen --noconfirm -S $PAC_PKGS
+      as_root yaourt --noconfirm -S $PAC_PKGS
       ;;
     dnf)
       as_root dnf -y install $DNF_PKGS
