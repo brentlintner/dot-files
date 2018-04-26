@@ -54,12 +54,7 @@ Time $alignr${time %H}:${time %M} EST
 Date $alignr${time %B} ${time %e}, ${time %Y}
 Users $alignr$user_names ($user_number)
 Uptime $alignr$uptime_short
-Procs $alignr$processes ($running_processes running)${if_existing $battery}
-${if_existing $battery_time}
-Battery $alignr${battery} $battery_time
-${else}
-Battery $alignr${battery}
-${endif}${else}${endif}
+Procs $alignr$processes ($running_processes running)
 Load $alignr$loadavg
 
 Root $alignr${fs_used /}/${fs_size /} (${fs_used_perc /}%)
