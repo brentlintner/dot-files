@@ -3,6 +3,7 @@ alias pwsh="TERM=xterm pwsh"
 alias t="npm -s t"
 alias xo="xdg-open"
 alias v="vim"
+alias choco="choco.exe"
 
 alias plex-start="sudo systemctl enable --now plexmediaserver.service"
 alias plex-stop="sudo systemctl disable --now plexmediaserver.service"
