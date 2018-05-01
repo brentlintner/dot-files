@@ -8,7 +8,7 @@ APT_PKGS="zsh bash neovim python-neovim optipng python3 curl conky parallel node
 PAC_PKGS="zsh bash neovim python-neovim optipng python3 curl conky parallel nodejs ruby redis postgresql terminator base-devel gnome-shell-extensions git ttf-inconsolata ttf-dejavu gnome-tweaks"
 DNF_PKGS="zsh bash neovim python-neovim optipng python3 curl conky parallel nodejs ruby ruby-dev redis postgresql terminator gnome-tweak-tool gnome-shell-extension-user-theme git dejavu-sans-fonts levien-inconsolata-fonts automake autoconf readline-devel ncurses-devel openssl-devel libyaml-devel libxslt-devel libffi-devel libtool unixODBC-devel"
 BRW_PKGS="zsh bash neovim nodejs parallel ruby git redis postgresql font-inconsolata font-dejavu coreutils automake autoconf openssl libyaml readline libxslt libtool unixodbc"
-ZYP_PKGS="zsh bash neovim python-neovim python3 curl conky gnu_parallel nodejs ruby redis postgresql terminator gnome-tweak-tool gnome-shell-extension-user-theme git dejavu-sans-fonts levien-inconsolata-fonts automake autoconf readline-devel ncurses-devel openssl-devel libyaml-devel libxslt-devel libffi-devel libtool unixODBC-devel"
+ZYP_PKGS="zsh bash neovim python-neovim python3 curl conky gnu_parallel nodejs ruby redis postgresql terminator gnome-tweak-tool git dejavu-fonts google-inconsolata-fonts automake autoconf readline-devel ncurses-devel openssl-devel libyaml-devel libxslt-devel libffi-devel libtool unixODBC-devel"
 # TODO: yum
 YUM_PKGS="zsh bash neovim python-neovim python3 curl conky parallel nodejs ruby redis postgresql terminator gnome-tweak-tool gnome-shell-extension-user-theme git dejavu-sans-fonts levien-inconsolata-fonts automake autoconf readline-devel ncurses-devel openssl-devel libyaml-devel libxslt-devel libffi-devel libtool unixODBC-devel"
 
@@ -59,7 +59,7 @@ install_pkgs() {
       as_root dnf -y install $DNF_PKGS
       ;;
     zypper)
-      as_root zypper -y install $ZYP_PKGS
+      as_root zypper in -y $ZYP_PKGS
       ;;
     yum)
       as_root yum -y install $YUM_PKGS
