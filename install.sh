@@ -97,6 +97,7 @@ install() {
   # premake some dirs
   mkdir -p "$HOME/.config"
   mkdir -p "$HOME/.config/terminator"
+  mkdir -p "$HOME/.config/albert"
   mkdir -p "$HOME/.vscode"
   mkdir -p "$HOME/.local/share/applications"
   mkdir -p "$HOME/.config/Typora/conf"
@@ -117,6 +118,9 @@ install() {
   ln -sf "$HOME/.dot-files/.gitignore"
   ln -sf "$HOME/.dot-files/.gitmessage"
   ln -sf "$HOME/.dot-files/.gitconfig"
+
+  # albert
+  ln -sf "$HOME/.dot-files/albert.conf" "$HOME/.config/albert/albert.conf"
 
   # terminator
   ln -sf "$HOME/.dot-files/.terminator" "$HOME/.config/terminator/config"
