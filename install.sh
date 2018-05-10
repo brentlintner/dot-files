@@ -57,7 +57,7 @@ install_pkgs() {
       ;;
     brew)
       brew tap caskroom/fonts
-      brew cask install font-inconsolata font-dejavu
+      brew cask install font-inconsolata font-dejavu-sans
       brew install -y $BRW_PKGS
       ;;
     dnf)
