@@ -30,6 +30,8 @@ as_root() {
 check_packager() {
   if [ ! -z "$(command -v pacman)" ]; then
     PACKAGER="pacman"
+  elif [ "$OS" = "Darwin" ] && [ ! -z "$(command -v brew)" ]; then
+    PACKAGER="brew"
   elif [ ! -z "$(command -v zypper)" ]; then
     PACKAGER="zypper"
   elif [ ! -z "$(command -v dnf)" ]; then
@@ -38,8 +40,6 @@ check_packager() {
     PACKAGER="yum"
   elif [ ! -z "$(command -v apt)" ]; then
     PACKAGER="apt"
-  elif [ "$OS" = "Darwin" ] && [ ! -z "$(command -v brew)" ]; then
-    PACKAGER="brew"
   fi
 }
 
