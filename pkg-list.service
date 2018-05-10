@@ -1,5 +1,0 @@
-[Service]
-ExecStart=/etc/systemd/system/pkg-list.sh
-
-[Install]
-WantedBy=default.target

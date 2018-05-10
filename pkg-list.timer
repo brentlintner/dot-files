@@ -1,9 +1,0 @@
-[Unit]
-Description=Update current pacman package lists daily
-
-[Timer]
-OnCalendar=daily
-Persistent=true
-
-[Install]
-WantedBy=timers.target
