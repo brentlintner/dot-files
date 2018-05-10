@@ -56,8 +56,8 @@ install_pkgs() {
       as_root yaourt --noconfirm -S $PAC_PKGS
       ;;
     brew)
-      as_root brew tap caskroom/fonts
-      as_root brew install -y $BRW_PKGS
+      brew tap caskroom/fonts
+      brew install -y $BRW_PKGS
       ;;
     dnf)
       as_root dnf -y install $DNF_PKGS
