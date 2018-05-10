@@ -55,6 +55,10 @@ install_pkgs() {
       as_root pacman --noconfirm -S yaourt
       as_root yaourt --noconfirm -S $PAC_PKGS
       ;;
+    brew)
+      as_root brew tap caskroom/fonts
+      as_root brew install -y $BRW_PKGS
+      ;;
     dnf)
       as_root dnf -y install $DNF_PKGS
       ;;
@@ -66,10 +70,6 @@ install_pkgs() {
       ;;
     apt)
       as_root apt -y install $APT_PKGS
-      ;;
-    brew)
-      as_root brew tap caskroom/fonts
-      as_root brew install -y $BRW_PKGS
       ;;
     *)
       echo "WARNING: Unknown pkg manager."
