@@ -78,7 +78,7 @@ install_pkgs() {
   esac
 
   if [ -z "$(command -v node)" ]; then
-    as_root ln -fs /usr/bin/nodejs /usr/bin/node
+    as_root ln -fs $(which node) /usr/bin/node
   fi
 }
 
