@@ -100,8 +100,8 @@ ${diskiograph 26,300 FFFFFF FFFFFF -l}
 Disk $alignr$hddtemp°C
 Read$alignr${diskio_read}
 Write$alignr${diskio_write}
-${if_existing /proc/net/route wlp0s20u2}
-${upspeedgraph wlp0s20u2 26,145 FFFFFF FFFFFF}$alignr${downspeedgraph wlp0s20u2 26,145 FFFFFF FFFFFF}
-Up ${upspeed wlp0s20u2}${alignr}Down ${downspeed wlp0s20u2}
-Sent ${totalup wlp0s20u2}${alignr}Received ${totaldown wlp0s20u2}
+${if_existing /proc/net/route enp3s0}
+${upspeedgraph enp3s0 26,145 FFFFFF FFFFFF}$alignr${downspeedgraph enp3s0 26,145 FFFFFF FFFFFF}
+Up ${upspeed enp3s0}${alignr}Down ${downspeed enp3s0}
+Sent ${totalup enp3s0}${alignr}Received ${totaldown enp3s0}
 ]];
