@@ -88,6 +88,10 @@ install() {
 
   cd "$HOME"
 
+  if [ ! -z "$(command -v systemd-run)" ]; then
+    as_root systemd-run --on-calendar=daily /bin/sh /home/brent/.dot-files/pkg-list.sh
+  fi
+
   # install ohmyzsh
   rm -rf "$HOME/.oh-my-zsh"
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sed 's/^\s*env zsh$//g')"

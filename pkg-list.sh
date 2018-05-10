@@ -2,8 +2,6 @@
 
 BACKUP_FILE=/home/brent/.pacman-installed.txt
 
-rm $BACKUP_FILE
-
 trizen --stats > $BACKUP_FILE
 
 echo -e "\n\nAUR installed:\n" >> $BACKUP_FILE
