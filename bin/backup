@@ -2,7 +2,7 @@
 
 from_path=$1
 ssh_folder=$2
-ssh_url="brent@bmacmini:/Volumes/backup/bnixbook-"
+ssh_url="brent@bmacmini:/Volumes/backup"
 ssh_opts="ssh -o Compression=no"
 
 set -e
@@ -27,7 +27,7 @@ run() {
 
   echo "connecting to $ssh_url$ssh_folder..."
 
-  rsync -e "$ssh_opts" -h -r -t -v --progress $from_path "$ssh_url$ssh_folder"
+  rsync -e "$ssh_opts" -h -r -t -v --progress "$from_path" "$ssh_url$ssh_folder"
 }
 
 run
