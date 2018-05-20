@@ -2,7 +2,7 @@
 
 from_path=$1
 ssh_folder=$2
-ssh_url="brent@bmacmini:/Volumes/backup"
+ssh_url="brent@bmacmini:/Volumes/backup/"
 ssh_opts="ssh -o Compression=no"
 
 set -e
