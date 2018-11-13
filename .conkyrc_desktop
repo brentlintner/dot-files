@@ -64,10 +64,7 @@ Swap $alignr$swap/$swapmax ($swapperc%)
 
 ${cpugraph 26,300 FFFFFF FFFFFF -l}
 Cpu $alignr${cpu}%
-Core1 $alignr${execi 5 sensors | grep 'Core 0' | cut -c15-18 | sed -E 's/\+//'}°C
-Core2 $alignr${execi 5 sensors | grep 'Core 1' | cut -c15-18 | sed -E 's/\+//'}°C
-Core3 $alignr${execi 5 sensors | grep 'Core 2' | cut -c15-18 | sed -E 's/\+//'}°C
-Core4 $alignr${execi 5 sensors | grep 'Core 3' | cut -c15-18 | sed -E 's/\+//'}°C
+Temp $alignr${execi 5 sensors | grep 'CPUTIN' | cut -c24-27 | sed -E 's/\+//'}°C
 Fan $alignr${execi 2 sensors | grep 'fan2' | cut -c15-31}
 
 ${color1}Proc$alignr${color1}Cpu %
@@ -85,7 +82,7 @@ ${top_mem name 4}$alignr${top_mem mem_res 4}
 ${top_mem name 5}$alignr${top_mem mem_res 5}
 
 Mobo $alignr${hwmon temp 1}°C
-Fan $alignr${execi 2 sensors | grep 'fan1' | cut -c15-31}
+Fan $alignr${execi 2 sensors | grep 'fan3' | cut -c15-31}
 
 Gpu$alignr${execi 2 nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader,nounits}%
 Mem $alignr${execi 2 nvidia-smi --query-gpu=memory.used --format=csv,noheader,nounits}M/${execi 2 nvidia-smi --query-gpu=memory.total --format=csv,noheader,nounits}M
