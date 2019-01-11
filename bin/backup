@@ -2,7 +2,8 @@
 
 from_path=$1
 ssh_folder=$2
-ssh_url="brent@bmacmini:/Volumes/backup/"
+dry_run=$3
+ssh_url="bmacmini:/Volumes/backup/"
 ssh_opts="ssh -o Compression=no"
 
 set -e
@@ -25,9 +26,13 @@ run() {
     echo "ssh_folder is empty"; exit 1;
   fi
 
-  echo "connecting to $ssh_url$ssh_folder..."
+  rsync_opts="-h -r --delete-after --rsync-path=/usr/local/bin/rsync --iconv=utf-8,utf-8-mac -t -v --progress"
 
-  rsync -e "$ssh_opts" -h -r -t -v --progress "$from_path" "$ssh_url$ssh_folder"
+  echo "connecting to $ssh_url$ssh_folder... [DRY RUN]"
+  rsync -e "$ssh_opts" --dry-run $rsync_opts "$from_path" "$ssh_url$ssh_folder"
+  echo ""
+  read -p "Does this look OK?"
+  rsync -e "$ssh_opts"  $rsync_opts "$from_path" "$ssh_url$ssh_folder"
 }
 
 run
