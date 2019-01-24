@@ -50,8 +50,6 @@ conky.config = {
 
 conky.text = [[
 System $alignr$nodename@${execi 120 uname -r | sed 's/\-manjaro//i'}
-Time $alignr${time %H}:${time %M} EST
-Date $alignr${time %B} ${time %e}, ${time %Y}
 Users $alignr$user_names ($user_number)
 Uptime $alignr$uptime_short
 Procs $alignr$processes ($running_processes running)
@@ -94,7 +92,7 @@ ${memgraph 26,300 FFFFFF FFFFFF -l}
 Mem$alignr$mem/$memmax ($memperc%)
 
 ${diskiograph 26,300 FFFFFF FFFFFF -l}
-Disk $alignr$hddtemp°C
+Disk $alignr${hddtemp}°C
 Read$alignr${diskio_read}
 Write$alignr${diskio_write}
 ${if_existing /proc/net/route enp3s0}
