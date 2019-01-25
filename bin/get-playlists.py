@@ -13,7 +13,7 @@ API_URL      = SERVER_URL + "api/v3/"
 DOWNLOAD_DIR = os.path.join(os.path.expanduser("~"), "Downloads")
 
 # TODO: ugh weirdness, just log into WebTools with your browser and set cookie ENV var before calling
-cookies = { "WebTools": os.environ["WEBTOOLS_COOKIE"] }
+cookies = { "WebTools": os.environ["WEBTOOLS_AUTH"] }
 # def login_user(req):
   # authtxt = base64.b64encode('{}:{}'.format(PLEX_USER, PLEX_PASS).encode()).decode("ascii")
   # headers = { "Authorization": "Basic %s" % authtxt }
