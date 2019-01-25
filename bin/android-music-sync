@@ -52,6 +52,7 @@ sync_playlists() {
   #read -s -p "Plex Password: " plex_pass
 
   rm -f $downloads_path/*.m3u8
+  rm -f $playlist_from_path/*.txt
   $script_path/get-playlists.py
   cp $downloads_path/*.m3u8 $playlist_from_path/.
 

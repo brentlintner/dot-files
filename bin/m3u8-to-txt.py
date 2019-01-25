@@ -6,6 +6,7 @@ import sys
 import os
 import urllib.parse
 import re
+import time
 
 filepath = sys.argv[1]
 sd_card_music="/storage/3366-6437/Music"
@@ -30,7 +31,7 @@ for line in fp:
 
 fp.close()
 
-new_filepath = filepath.replace(".m3u8", "_4000.txt")
+new_filepath = filepath.replace(".m3u8", "_{}.txt".format(int(time.time())))
 fo = open(new_filepath, "w")
 
 for line in lines:
