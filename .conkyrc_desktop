@@ -31,7 +31,7 @@ conky.config = {
 	own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
 
 	alignment = 'top_right',
-	gap_x = 40,
+	gap_x = 15,
 	gap_y = 40,
 	minimum_width = 300,
 	minimum_height = 600,
@@ -50,6 +50,8 @@ conky.config = {
 
 conky.text = [[
 System $alignr$nodename@${execi 120 uname -r | sed 's/\-manjaro//i'}
+Time $alignr${time %H}:${time %M} EST
+Date $alignr${time %B} ${time %e}, ${time %Y}
 Users $alignr$user_names ($user_number)
 Uptime $alignr$uptime_short
 Procs $alignr$processes ($running_processes running)
