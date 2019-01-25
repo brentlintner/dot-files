@@ -5,11 +5,12 @@ trap "exit" INT
 set -e
 
 opt_flag=$1
+script_path=`dirname $0`
 sd_card_path="/storage/3366-6437"
 music_library_path="$HOME/Music"
 playlist_from_path="$HOME/Playlists"
 adb_sync_opts_base="--delete"
-plex_playlist_download_path="$HOME/Downloads"
+downloads_path="$HOME/Downloads"
 pulsar_playlist_backups="/sdcard/Android/data/com.rhmsoft.pulsar.pro/files/playlists"
 
 if [ "$opt_flag" = "--dry-run" ]; then
@@ -19,8 +20,8 @@ else
 fi
 
 prune_non_audio_files() {
-  # blacklist approach: find ~/Music -type f | grep -viP '\.(mp4|m4a|aac|mp3|flac|dsd|ogg)'
-  find $music_library_path -type f -iregex '.*\.\(cue\|ffp\|md5\|\!ut\|bmp\|plist\|url\|log\|m4p\|m4v\|jpg\|jpeg\|png\|txt\|ini\|DS_STORE\|sfv\|gif\|css\|html\|xml\|pdf\|js\|db\)$' -print0 | while IFS= read -r -d '' file; do
+  # blacklist approach: find ~/Music/. -type f | grep -viP '\.(mp4|m4a|aac|mp3|flac|dsd|ogg)'
+  find "$music_library_path/." -type f -iregex '.*\.\(cue\|ffp\|md5\|\!ut\|bmp\|plist\|url\|log\|m4p\|m4v\|jpg\|jpeg\|png\|txt\|ini\|DS_STORE\|sfv\|gif\|css\|html\|xml\|pdf\|js\|db\)$' | grep -vi 'cover.jpg' | tr "\n" "\0" | while IFS= read -r -d '' file; do
     if [ "$opt_flag" = "--dry-run" ]; then
       echo "rm $file"
     else
@@ -31,7 +32,7 @@ prune_non_audio_files() {
 }
 
 prune_empty_folders() {
-  find $music_library_path -type d -empty -print0 | while IFS= read -r -d '' dir; do
+  find "$music_library_path/." -type d -empty -print0 | while IFS= read -r -d '' dir; do
     if [ "$opt_flag" = "--dry-run" ]; then
       echo "rmdir $dir"
     else
@@ -42,17 +43,25 @@ prune_empty_folders() {
 }
 
 sync_playlists() {
-  cp $plex_playlist_download_path/*.m3u8 $playlist_from_path/.
+  if [ "$opt_flag" = "--dry-run" ]; then
+    echo "Skipping generation..."
+    return
+  fi
+
+  #read -p "Plex User: " plex_user
+  #read -s -p "Plex Password: " plex_pass
+
+  rm -f $downloads_path/*.m3u8
+  $script_path/get-playlists.py
+  cp $downloads_path/*.m3u8 $playlist_from_path/.
+
   for pls in $playlist_from_path/*.m3u8
   do
-    if [ "$opt_flag" = "--dry-run" ]; then
-      echo "using $pls"
-    else
-      $playlist_from_path/m3u8-to-txt.py "$pls"
-      rm "$pls"
-    fi
+    $script_path/m3u8-to-txt.py "$pls"
+    rm "$pls"
   done
   echo ""
+
   adb-sync $adb_sync_opts "$playlist_from_path/" "$pulsar_playlist_backups"
 }
 
@@ -81,7 +90,7 @@ main() {
   read -p "Ready? This could take some time."
   echo ""
 
-  time for artist in $music_library_path/*; do
+  for artist in $music_library_path/*; do
     adb-sync $adb_sync_opts "$artist" "$sd_card_path/Music"
   done
 }
