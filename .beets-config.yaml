@@ -1,0 +1,12 @@
+directory: ~/Music
+plugins: scrub zero info fetchart embedart lastgenre ftintitle
+duplicate_action: ask
+asciify_paths: yes
+zero:
+  keep_fields: title artist album year track genre images
+ftintitle:
+  drop: no
+  auto: yes
+import:
+  timid: no
+  move: yes
