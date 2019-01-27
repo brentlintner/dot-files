@@ -2,6 +2,7 @@ directory: ~/Music
 plugins: scrub zero info fetchart embedart lastgenre ftintitle
 duplicate_action: ask
 asciify_paths: yes
+original_date: yes
 zero:
   keep_fields: title artist album year track genre images
 ftintitle:
@@ -10,3 +11,13 @@ ftintitle:
 import:
   timid: no
   move: yes
+replace:
+    '[\\/]': _
+    '^\.': _
+    '[\x00-\x1f]': _
+    '[<>:"\?\*\|]': _
+    '\.$': _
+    '\s+$': ''
+    '^\s+': ''
+    '^-': _
+    '[\(\)]': ''
