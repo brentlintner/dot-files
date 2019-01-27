@@ -82,8 +82,12 @@ main() {
   prune_empty_folders
 
   echo -e "\n-- Sync Playlists --\n"
-  log_if_dry_run
-  sync_playlists
+  if [ "$opt_flag" = "--skip-playlists" ]; then
+    echo -e "Skipping playlists..."
+  else
+    log_if_dry_run
+    sync_playlists
+  fi
 
   echo -e "\n-- Sync Music --\n"
   log_if_dry_run

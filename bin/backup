@@ -26,7 +26,7 @@ run() {
     echo "ssh_folder is empty"; exit 1;
   fi
 
-  rsync_opts="-h -r --inplace --delete-before --rsync-path=/usr/local/bin/rsync --iconv=utf-8,utf-8-mac -t -v --progress"
+  rsync_opts="-h -r --inplace --delete-during --rsync-path=/usr/local/bin/rsync --iconv=utf-8,utf-8-mac -t -v --progress"
 
   echo "connecting to $ssh_url$ssh_folder... [DRY RUN]"
   rsync -e "$ssh_opts" --dry-run $rsync_opts "$from_path" "$ssh_url$ssh_folder"
