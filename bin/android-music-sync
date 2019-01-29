@@ -21,7 +21,7 @@ fi
 
 prune_non_audio_files() {
   # blacklist approach: find ~/Music/. -type f | grep -viP '\.(mp4|m4a|aac|mp3|flac|dsd|ogg)'
-  find "$music_library_path/." -type f -iregex '.*\.\(cue\|ffp\|md5\|\!ut\|bmp\|plist\|url\|log\|m4p\|m4v\|jpg\|jpeg\|png\|txt\|ini\|DS_STORE\|sfv\|gif\|css\|html\|xml\|pdf\|js\|db\)$' | grep -vi 'cover.jpg' | tr "\n" "\0" | while IFS= read -r -d '' file; do
+  find "$music_library_path/." -type f -iregex '.*\.\(cue\|ffp\|md5\|\!ut\|bmp\|plist\|url\|log\|m4p\|m4v\|jpg\|jpeg\|png\|txt\|ini\|DS_STORE\|sfv\|gif\|css\|html\|xml\|pdf\|js\|db\)$' | grep -viP 'cover\.(jpg|png)' | tr "\n" "\0" | while IFS= read -r -d '' file; do
     if [ "$opt_flag" = "--dry-run" ]; then
       echo "rm $file"
     else
@@ -92,12 +92,20 @@ main() {
   echo -e "\n-- Sync Music --\n"
   log_if_dry_run
 
-  read -p "Ready? This could take some time."
-  echo ""
+  adb-sync $adb_sync_opts "$music_library_path" "$sd_card_path"
 
-  for artist in $music_library_path/*; do
-    adb-sync $adb_sync_opts "$artist" "$sd_card_path/Music"
-  done
+  sleep 2
+
+  # better not to have on mobile given auto photo lookups
+  if [ "$opt_flag" = "--dry-run" ]; then
+    adb shell find "$sd_card_path/Music/" -name 'cover.jpg' -type f
+    adb shell find "$sd_card_path/Music/" -name 'cover.png' -type f
+  else
+    adb shell find "$sd_card_path/Music/" -name 'cover.jpg' -type f -delete
+    adb shell find "$sd_card_path/Music/" -name 'cover.png' -type f -delete
+  fi
+  # TODO: -empty not working on --version=toybox 0.7.3--android?
+  #adb shell find "$sd_card_path/Music/" -type d -empty -delete
 }
 
 main
