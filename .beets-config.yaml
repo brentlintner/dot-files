@@ -1,5 +1,5 @@
 directory: ~/Music
-plugins: scrub zero info fetchart embedart lastgenre ftintitle
+plugins: info fetchart ftintitle zero scrub
 duplicate_action: ask
 asciify_paths: yes
 original_date: yes
@@ -11,6 +11,7 @@ ftintitle:
 import:
   timid: no
   move: yes
+  write: yes
 replace:
     '[\\/]': _
     '^\.': _
