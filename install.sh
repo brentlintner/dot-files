@@ -94,7 +94,7 @@ install() {
 
   # install ohmyzsh
   rm -rf "$HOME/.oh-my-zsh"
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sed 's/^\s*env zsh$//g')"
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sed 's/^\s*env zsh -l$//g')"
 
   # zsh theme
   ln -sf "$HOME/.dot-files/brent.zsh-theme" "$HOME/.oh-my-zsh/themes/brent.zsh-theme"
