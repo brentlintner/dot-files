@@ -94,11 +94,10 @@ ${memgraph 26,300 FFFFFF FFFFFF -l}
 Mem$alignr$mem/$memmax ($memperc%)
 
 ${diskiograph 26,300 FFFFFF FFFFFF -l}
-Disk $alignr${hddtemp}°C
 Read$alignr${diskio_read}
 Write$alignr${diskio_write}
-${if_existing /proc/net/route enp3s0}
-${upspeedgraph enp3s0 26,145 FFFFFF FFFFFF}$alignr${downspeedgraph enp3s0 26,145 FFFFFF FFFFFF}
-Up ${upspeed enp3s0}${alignr}Down ${downspeed enp3s0}
-Sent ${totalup enp3s0}${alignr}Received ${totaldown enp3s0}
+${if_existing /proc/net/route wlp28s0}
+${upspeedgraph wlp28s0 26,145 FFFFFF FFFFFF}$alignr${downspeedgraph wlp28s0 26,145 FFFFFF FFFFFF}
+Up ${upspeed wlp28s0}${alignr}Down ${downspeed wlp28s0}
+Sent ${totalup wlp28s0}${alignr}Received ${totaldown wlp28s0}
 ]];
