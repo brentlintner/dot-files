@@ -11,6 +11,7 @@ music_library_path="$HOME/Music"
 playlist_from_path="$HOME/Playlists"
 adb_sync_opts_base="--delete"
 downloads_path="$HOME/Downloads"
+android_media_playlists="/sdcard/Playlists"
 pulsar_playlist_backups="/sdcard/Android/data/com.rhmsoft.pulsar.pro/files/playlists"
 
 if [ "$opt_flag" = "--dry-run" ]; then
@@ -63,6 +64,7 @@ sync_playlists() {
   done
   echo ""
 
+  #adb shell rm "$android_media_playlists/*.pla"
   adb-sync $adb_sync_opts "$playlist_from_path/" "$pulsar_playlist_backups"
 }
 
@@ -81,6 +83,11 @@ main() {
   log_if_dry_run
   prune_empty_folders
 
+  echo -e "\n-- Sync Music --\n"
+  log_if_dry_run
+
+  adb-sync $adb_sync_opts "$music_library_path" "$sd_card_path"
+
   echo -e "\n-- Sync Playlists --\n"
   if [ "$opt_flag" = "--skip-playlists" ]; then
     echo -e "Skipping playlists..."
@@ -88,11 +95,6 @@ main() {
     log_if_dry_run
     sync_playlists
   fi
-
-  echo -e "\n-- Sync Music --\n"
-  log_if_dry_run
-
-  adb-sync $adb_sync_opts "$music_library_path" "$sd_card_path"
 
   #sleep 2
   # better not to have on mobile given auto photo lookups
