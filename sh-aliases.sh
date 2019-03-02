@@ -9,6 +9,8 @@ alias plex-start="sudo systemctl enable --now plexmediaserver.service"
 alias plex-stop="sudo systemctl disable --now plexmediaserver.service"
 alias ncu="npm-check-updates"
 
+alias asdf-update="asdf update && asdf plugin-update --all"
+
 alias pacman="pacman --color always"
 alias pa="trizen"
 alias pa-updates='pa -Qu --color always'
