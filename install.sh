@@ -45,7 +45,10 @@ check_packager() {
 
 install_asdf() {
   if [ ! -d "$HOME/.asdf" ]; then
-    git clone https://github.com/asdf-vm/asdf.git "$HOME/.asdf" --branch v0.4.3
+    git clone https://github.com/asdf-vm/asdf.git $HOME/.asdf
+    cd $HOME/.asdf
+    git checkout "$(git describe --abbrev=0 --tags)"
+    cd -
   fi
 }
 
