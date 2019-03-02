@@ -6,6 +6,8 @@ export VISUAL=vim
 export ARCHFLAGS="-arch x86_64"
 export SSH_KEY_PATH="~/.ssh/id_rsa"
 
+export GTK_THEME=mako
+
 export HEROKU_NOTIFICATIONS=0
 
 export PATH=$PATH:~/.cabal/bin
