@@ -5,7 +5,7 @@ set -xe
 OS=$(uname -s)
 
 APT_PKGS="zsh bash neovim python3-neovim python-neovim optipng python3 curl conky parallel nodejs ruby ruby-dev redis-server postgresql terminator build-essential gnome-shell-extensions gnome-tweak-tool git fonts-dejavu fonts-inconsolata automake autoconf libreadline-dev libncurses-dev libssl-dev libyaml-dev libxslt-dev libffi-dev libtool unixodbc-dev"
-PAC_PKGS="zsh bash neovim python-neovim python2-neovim optipng python3 curl conky parallel nodejs ruby redis postgresql terminator base-devel gnome-shell-extensions git ttf-inconsolata ttf-dejavu gnome-tweaks"
+PAC_PKGS="zsh zsh-autosuggestions zsh-completions bash neovim python-neovim python2-neovim optipng python3 curl conky parallel nodejs ruby redis postgresql terminator base-devel gnome-shell-extensions git ttf-inconsolata ttf-dejavu gnome-tweaks"
 DNF_PKGS="zsh bash neovim python3-neovim python-neovim optipng python3 curl conky parallel nodejs ruby ruby-dev redis postgresql terminator gnome-tweak-tool gnome-shell-extension-user-theme git dejavu-sans-fonts levien-inconsolata-fonts automake autoconf readline-devel ncurses-devel openssl-devel libyaml-devel libxslt-devel libffi-devel libtool unixODBC-devel"
 BRW_PKGS="zsh bash neovim nodejs parallel ruby git redis postgresql coreutils automake autoconf openssl libyaml readline libxslt libtool unixodbc"
 ZYP_PKGS="zsh bash neovim python-neovim python3 curl conky gnu_parallel nodejs ruby redis postgresql terminator gnome-tweak-tool git dejavu-fonts google-inconsolata-fonts automake autoconf readline-devel ncurses-devel openssl-devel libyaml-devel libxslt-devel libffi-devel libtool unixODBC-devel"
