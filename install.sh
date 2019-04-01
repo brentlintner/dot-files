@@ -55,8 +55,8 @@ install_asdf() {
 install_pkgs() {
   case $PACKAGER in
     pacman)
-      as_root pacman --noconfirm -S yaourt
-      as_root yaourt --noconfirm -S $PAC_PKGS
+      as_root pacman --noconfirm -S trizen
+      trizen --noconfirm -S $PAC_PKGS
       ;;
     brew)
       brew tap caskroom/fonts
