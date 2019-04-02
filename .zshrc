@@ -16,12 +16,8 @@ fi
 
 # load ohmyzsh (https://github.com/robbyrussell/oh-my-zsh)
 export ZSH=$HOME/.oh-my-zsh
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
 ZSH_THEME="brent"
 plugins=(
-  zsh-autosuggestions
-  zsh-completions
   git
   rails
   heroku
