@@ -136,6 +136,7 @@ install() {
 
   # vscode
   ln -sf "$HOME/.dot-files/vscode.settings.json" "$HOME/.config/Code/User/settings.json"
+  ln -sf "$HOME/.dot-files/vscode.keybindings.json" "$HOME/.config/Code/User/keybindings.json"
 
   # typora
   ln -sf "$HOME/.dot-files/typora.user.conf.json" "$HOME/.config/Typora/conf/conf.user.json"
