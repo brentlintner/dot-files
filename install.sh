@@ -107,6 +107,7 @@ install() {
   mkdir -p "$HOME/.config/terminator"
   mkdir -p "$HOME/.config/albert"
   mkdir -p "$HOME/.vscode"
+  mkdir -p "$HOME/.config/Code/User"
   mkdir -p "$HOME/.local/share/applications"
   mkdir -p "$HOME/.config/Typora/conf"
 
@@ -134,7 +135,7 @@ install() {
   ln -sf "$HOME/.dot-files/.terminator" "$HOME/.config/terminator/config"
 
   # vscode
-  ln -sf "$HOME/.dot-files/vscode.config.json" "$HOME/.vscode/config.json"
+  ln -sf "$HOME/.dot-files/vscode.settings.json" "$HOME/.config/Code/User/settings.json"
 
   # typora
   ln -sf "$HOME/.dot-files/typora.user.conf.json" "$HOME/.config/Typora/conf/conf.user.json"
