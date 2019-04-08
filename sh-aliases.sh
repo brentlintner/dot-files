@@ -13,6 +13,7 @@ alias truffles="trufflehog --regex --entropy=False"
 
 alias asdf-update="asdf update && asdf plugin-update --all"
 
+alias sc="systemctl"
 alias pacman="pacman --color always"
 alias pa="trizen"
 alias pa-updates='pa -Qu --color always'
@@ -28,6 +29,11 @@ alias ufw-accepts="sudo iptables -S | grep ACCEPT"
 alias errorlog="journalctl -p 3 -xb"
 alias systemlog="journalctl -xe"
 
+alias homestead="cd $HOME/.homestead && vagrant ssh && cd -"
+alias homestead-up="cd $HOME/.homestead && vagrant up && cd -"
+alias homestead-down="cd $HOME/.homestead && vagrant halt && cd -"
+alias homestead-status="cd $HOME/.homestead && vagrant status && cd -"
+alias artisan="php artisan"
 alias r="rspec"
 alias rr="spring rspec"
 alias nbuild="npm run compile -s"
