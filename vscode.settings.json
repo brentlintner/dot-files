@@ -6,5 +6,6 @@
     "vim.disableAnnoyingNeovimMessage": true,
     "keyboard.dispatch": "keyCode",
     "editor.fontSize": 18,
-    "editor.fontFamily": "'Inconsolata'"
+    "editor.fontFamily": "'Inconsolata'",
+    "workbench.startupEditor": "newUntitledFile"
 }
