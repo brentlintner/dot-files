@@ -15,8 +15,9 @@ alias asdf-update="asdf update && asdf plugin-update --all"
 
 alias sc="systemctl"
 alias pacman="pacman --color always"
-alias pa="trizen"
+alias pa="yay"
 alias pa-updates='pa -Qu --color always'
+alias pa-updates-core='pacman -Qu --color always'
 alias pa-updates-aur='pa -Qua --color always'
 alias pa-installed='pa -Q --color always'
 alias pa-installed-sys='pa -Qn --color always'
