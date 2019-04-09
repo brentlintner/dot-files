@@ -14,8 +14,9 @@ alias truffles="trufflehog --regex --entropy=False"
 alias asdf-update="asdf update && asdf plugin-update --all"
 
 alias sc="systemctl"
+alias sc-units="systemctl list-unit-files"
 alias pacman="pacman --color always"
-alias pa="yay"
+alias pa="yay --color always"
 alias pa-updates='pa -Qu --color always'
 alias pa-updates-core='pacman -Qu --color always'
 alias pa-updates-aur='pa -Qua --color always'
