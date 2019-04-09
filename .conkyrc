@@ -100,9 +100,9 @@ ${color2}${top_mem name 4}${color}$alignr${top cpu 4} %
 ${color2}${top_mem name 5}${color}$alignr${top cpu 5} %
 
 ${color1}Proc${color}$alignr${color1}${color1}Mem${color}
-${color2}${top_mem name 1}${color}$alignr${top_mem mem_res 1}
-${color2}${top_mem name 2}${color}$alignr${top_mem mem_res 2}
-${color2}${top_mem name 3}${color}$alignr${top_mem mem_res 3}
-${color2}${top_mem name 4}${color}$alignr${top_mem mem_res 4}
-${color2}${top_mem name 5}${color}$alignr${top_mem mem_res 5}
+${color2}${top_mem name 1}${color}$alignr${top_mem mem 1}
+${color2}${top_mem name 2}${color}$alignr${top_mem mem 2}
+${color2}${top_mem name 3}${color}$alignr${top_mem mem 3}
+${color2}${top_mem name 4}${color}$alignr${top_mem mem 4}
+${color2}${top_mem name 5}${color}$alignr${top_mem mem 5}
 ]];
