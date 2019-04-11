@@ -42,6 +42,7 @@ alias r="rspec"
 alias rr="spring rspec"
 alias nbuild="npm run compile -s"
 alias gitk="tig"
+alias gk="tig"
 alias git-view-merged='git branch --merged | grep -v "\*"'
 alias git-delete-merged='git branch --merged | grep -v "\*" | xargs -n 1 git branch -d'
 alias g="git s"
