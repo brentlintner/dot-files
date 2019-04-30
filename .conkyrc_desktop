@@ -62,18 +62,19 @@ Boot $alignr${fs_used /boot/efi}/${fs_size /boot/efi} (${fs_used_perc /boot/efi}
 Home $alignr${fs_used /home}/${fs_size /home} (${fs_used_perc /home}%)
 Swap $alignr$swap/$swapmax ($swapperc%)
 
+${cpugraph 26,300 FFFFFF FFFFFF -l}
+Cpu $alignr${cpu}%
+Freq $alignr${freq_g}GHz
+Fan $alignr${execi 2 sensors | grep 'fan2' | cut -c15-31}
+Temp $alignr${execi 5 sensors | grep 'SMBUSMASTER' | cut -c24-27 | sed -E 's/\+//'}°C
+Mobo $alignr${execi 5 sensors | grep 'CPUTIN' | cut -c24-27 | sed -E 's/\+//'}°C
+Case Fan $alignr${execi 2 sensors | grep 'fan3' | cut -c15-31}
+
 Gpu$alignr${execi 2 nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader,nounits}%
 Mem $alignr${execi 2 nvidia-smi --query-gpu=memory.used --format=csv,noheader,nounits}M/${execi 2 nvidia-smi --query-gpu=memory.total --format=csv,noheader,nounits}M
 #${execigraph "nvidia-settings -tq GPUUtilization | head -1 | awk -F '[,= ]' '{ print $2 }'"}
 Temp $alignr${execi 5 nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader,nounits}°C
 Fan $alignr${execi 2 nvidia-settings -tq GPUCurrentFanSpeedRPM} RPM (${execi 2 nvidia-settings -tq GPUCurrentFanSpeed}%)
-
-${cpugraph 26,300 FFFFFF FFFFFF -l}
-Cpu $alignr${cpu}%
-Fan $alignr${execi 2 sensors | grep 'fan2' | cut -c15-31}
-Temp $alignr${execi 5 sensors | grep 'SMBUSMASTER' | cut -c24-27 | sed -E 's/\+//'}°C
-Mobo $alignr${execi 5 sensors | grep 'CPUTIN' | cut -c24-27 | sed -E 's/\+//'}°C
-Case Fan $alignr${execi 2 sensors | grep 'fan3' | cut -c15-31}
 
 ${memgraph 26,300 FFFFFF FFFFFF -l}
 Mem$alignr$mem/$memmax ($memperc%)
