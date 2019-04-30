@@ -1,11 +1,11 @@
 {
     "terminal.external.linuxExec": "xterm",
     "telemetry.enableTelemetry": false,
-    "workbench.colorTheme": "Monokai",
     "vim.enableNeovim": false,
     "vim.disableAnnoyingNeovimMessage": true,
     "keyboard.dispatch": "keyCode",
-    "editor.fontSize": 18,
-    "editor.fontFamily": "'Inconsolata'",
-    "workbench.startupEditor": "newUntitledFile"
+    "editor.fontSize": 20,
+    "editor.fontFamily": "Inconsolata",
+    "workbench.startupEditor": "newUntitledFile",
+    "workbench.colorTheme": "Twilight"
 }
