@@ -28,8 +28,8 @@ alias calc=gcalccmd
 alias incognito-ca="sudo openvpn ~/.airvpn/AirVPN_Canada_UDP-443.ovpn"
 alias ufw-rejects="sudo iptables -S | grep -P 'REJECT|DENIED|DENY'"
 alias ufw-accepts="sudo iptables -S | grep ACCEPT"
-alias errorlog="journalctl -p 3 -xb"
-alias systemlog="journalctl -xe"
+alias journal-errors="journalctl -r -p 3 -xb"
+alias journal-log="journalctl -rx"
 
 alias homestead="cd $HOME/.homestead && vagrant ssh && cd -"
 alias homestead-up="cd $HOME/.homestead && vagrant up && cd -"
