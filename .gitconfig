@@ -49,7 +49,7 @@
 [github]
 	user = brentlintner
 [rerere]
-	enabled = true
+	enabled = false
 [status]
 	showUntrackedFiles = all
 [achievement]
