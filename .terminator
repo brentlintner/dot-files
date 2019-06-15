@@ -2,6 +2,7 @@
   dbus = False
   enabled_plugins = ,
   focus = system
+  inactive_color_offset = 1.0
   suppress_multiple_term_dialog = True
   tab_position = bottom
   title_font = Inconsolata 12
@@ -10,6 +11,7 @@
 [keybindings]
   close_term = <Primary><Shift><Alt>w
   close_window = None
+  edit_tab_title = <Primary><Alt>e
   next_tab = <Primary><Alt>equal
   prev_tab = <Primary><Alt>minus
   switch_to_tab_2 = None
@@ -26,13 +28,13 @@
 [profiles]
   [[default]]
     background_color = "#202020"
-    background_darkness = 0.95
+    background_darkness = 0.9
     background_type = transparent
     copy_on_selection = True
     cursor_color = "#f0f0f0"
     custom_command = /bin/zsh
     font = Inconsolata 17
-    foreground_color = "#ffffff"
+    foreground_color = "#eaeaea"
     icon_bell = False
     login_shell = True
     palette = "#333333:#dc322f:#859900:#b58900:#268bd2:#d33682:#2aa198:#eee8d5:#555753:#cb4b16:#586e75:#657b83:#839496:#697678:#93a1a1:#fdf6e3"
