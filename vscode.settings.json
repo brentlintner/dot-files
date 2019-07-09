@@ -7,5 +7,6 @@
     "editor.fontSize": 20,
     "editor.fontFamily": "Inconsolata",
     "workbench.startupEditor": "newUntitledFile",
-    "workbench.colorTheme": "Twilight"
+    "workbench.colorTheme": "Twilight",
+    "window.zoomLevel": 0
 }
