@@ -17,6 +17,7 @@ alias sc="systemctl"
 alias sc-units="systemctl list-unit-files"
 alias pacman="pacman --color always"
 alias pa="yay --color always"
+alias pa-upgrade="pa -Sc --noconfirm; pa -Syyu --noconfirm"
 alias pa-updates='yay -Qu --color always'
 alias pa-updates-core='pacman -Qu --color always'
 alias pa-updates-aur='yay -Qua --color always'
