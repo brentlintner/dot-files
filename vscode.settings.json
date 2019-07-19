@@ -8,5 +8,19 @@
     "editor.fontFamily": "Inconsolata",
     "workbench.startupEditor": "newUntitledFile",
     "workbench.colorTheme": "Twilight",
-    "window.zoomLevel": 0
+    "window.zoomLevel": 0,
+    "breadcrumbs.enabled": true,
+    "editor.renderWhitespace": "none",
+    "editor.renderIndentGuides": false,
+    "window.menuBarVisibility": "toggle",
+    "workbench.activityBar.visible": false,
+    "workbench.colorCustomizations": {
+        "statusBar.background" : "#252526",
+        "statusBar.noFolderBackground" : "#212121",
+        "statusBar.debuggingBackground": "#263238"
+    },
+    "editor.renderLineHighlight": "none",
+    "editor.highlightActiveIndentGuide": false,
+    "editor.folding": false,
+    "editor.selectionHighlight": false
 }
