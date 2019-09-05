@@ -57,35 +57,40 @@ Uptime $alignr$uptime_short
 Procs $alignr$processes ($running_processes running)
 Load $alignr$loadavg
 
-Root $alignr${fs_used /}/${fs_size /} (${fs_used_perc /}%)
-Boot $alignr${fs_used /boot/efi}/${fs_size /boot/efi} (${fs_used_perc /boot/efi}%)
-Home $alignr${fs_used /home}/${fs_size /home} (${fs_used_perc /home}%)
-Swap $alignr$swap/$swapmax ($swapperc%)
-
 ${cpugraph 26,300 FFFFFF FFFFFF -l}
-Cpu $alignr${cpu}%
+Cpu $alignr${cpu}% (${execi 5 sensors | grep 'Tdie' | cut -c15-17 | sed -E 's/\+//'}°C)
 Freq $alignr${freq_g}GHz
 Fan $alignr${execi 2 sensors | grep 'fan2' | cut -c15-31}
-Temp $alignr${execi 5 sensors | grep 'SMBUSMASTER' | cut -c24-27 | sed -E 's/\+//'}°C
 Mobo $alignr${execi 5 sensors | grep 'CPUTIN' | cut -c24-27 | sed -E 's/\+//'}°C
-Case Fan $alignr${execi 2 sensors | grep 'fan3' | cut -c15-31}
-
-Gpu$alignr${execi 2 nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader,nounits}%
-Mem $alignr${execi 2 nvidia-smi --query-gpu=memory.used --format=csv,noheader,nounits}M/${execi 2 nvidia-smi --query-gpu=memory.total --format=csv,noheader,nounits}M
-#${execigraph "nvidia-settings -tq GPUUtilization | head -1 | awk -F '[,= ]' '{ print $2 }'"}
-Temp $alignr${execi 5 nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader,nounits}°C
-Fan $alignr${execi 2 nvidia-settings -tq GPUCurrentFanSpeedRPM} RPM (${execi 2 nvidia-settings -tq GPUCurrentFanSpeed}%)
+System $alignr${execi 5 sensors | grep 'SYSTIN' | cut -c25-27 | sed -E 's/\+//'}°C
+VRM $alignr${execi 5 sensors | grep 'AUXTIN0' | cut -c25-27 | sed -E 's/\+//'}°C
+PCH $alignr${execi 5 sensors | grep 'AUXTIN2' | cut -c25-27 | sed -E 's/\+//'}°C
 
 ${memgraph 26,300 FFFFFF FFFFFF -l}
 Mem$alignr$mem/$memmax ($memperc%)
 
+${execigraph 2 "nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader,nounits"}
+Gpu $alignr${execi 2 nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader,nounits}% (${execi 5 nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader,nounits}°C)
+Mem $alignr${execi 2 nvidia-smi --query-gpu=memory.used --format=csv,noheader,nounits}M/${execi 2 nvidia-smi --query-gpu=memory.total --format=csv,noheader,nounits}M
+#${execigraph "nvidia-settings -tq GPUUtilization | head -1 | awk -F '[,= ]' '{ print $2 }'"}
+Fan $alignr${execi 2 nvidia-settings -tq GPUCurrentFanSpeedRPM} RPM (${execi 2 nvidia-settings -tq GPUCurrentFanSpeed}%)
+
 ${diskiograph 26,300 FFFFFF FFFFFF -l}
 Read$alignr${diskio_read}
 Write$alignr${diskio_write}
-${if_existing /proc/net/route wlp28s0}
+Root $alignr${fs_used /}/${fs_size /} (${fs_used_perc /}%)
+Boot $alignr${fs_used /boot/efi}/${fs_size /boot/efi} (${fs_used_perc /boot/efi}%)
+Home $alignr${fs_used /home}/${fs_size /home} (${fs_used_perc /home}%)
+M2 ${alignr}${execi 2 cat /tmp/nvme0-temp}°C
+SATA $alignr${execi 2 nc localhost 7634 | sed 's/|//m' | sed 's/||/ \n/g' | awk -F'|' '{print $3}'}°C${if_existing /proc/net/route wlp28s0}
 ${upspeedgraph wlp28s0 26,145 FFFFFF FFFFFF}$alignr${downspeedgraph wlp28s0 26,145 FFFFFF FFFFFF}
+Wifi $alignr${execi 5 sensors | grep 'temp1:' | cut -c15-17 | sed -E 's/\+//'}°C
 Up ${upspeed wlp28s0}${alignr}Down ${downspeed wlp28s0}
-Sent ${totalup wlp28s0}${alignr}Received ${totaldown wlp28s0}
+Sent ${totalup wlp28s0}${alignr}Received ${totaldown wlp28s0}${endif}
+${if_existing /proc/net/route enp27s0}
+${upspeedgraph enp27s0 26,145 FFFFFF FFFFFF}$alignr${downspeedgraph enp27s0 26,145 FFFFFF FFFFFF}
+Up ${upspeed enp27s0}${alignr}Down ${downspeed enp27s0}
+Sent ${totalup enp27s0}${alignr}Received ${totaldown enp27s0}${endif}
 
 ${color1}Proc$alignr${color1}Cpu %
 ${top_mem name 1}$alignr${top cpu 1} %
