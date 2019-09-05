@@ -1,8 +1,6 @@
 export GPG_TTY=$(tty)
 
 export LANG=en_CA.UTF-8
-export EDITOR=vim
-export VISUAL=vim
 export ARCHFLAGS="-arch x86_64"
 export SSH_KEY_PATH="~/.ssh/id_rsa"
 
@@ -27,7 +25,8 @@ export PATH=$PATH:$ANDROID_HOME/platform-tools
 export NODE_REPL_HISTORY_FILE="$HOME/.node-repl-history"
 export N_PREFIX=$HOME
 export TERM=xterm-256color
-export EDITOR=vim
+export VISUAL=nvim
+export EDITOR=nvim
 
 export DEBFULLNAME="Brent Lintner"
 export DEBEMAIL="brent.lintner@gmail.com"
