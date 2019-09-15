@@ -10,7 +10,7 @@ conky.config = {
 	cpu_avg_samples = 5,
 	net_avg_samples = 5,
 	short_units = true,
-	pad_percents = 2,
+	pad_percents = 1,
 	top_name_width = 30,
 	uppercase = false,
 	text_buffer_size = 4096,
@@ -100,9 +100,9 @@ ${color2}${top_mem name 4}${color}$alignr${top cpu 4} %
 ${color2}${top_mem name 5}${color}$alignr${top cpu 5} %
 
 ${color1}Proc${color}$alignr${color1}${color1}Mem${color}
-${color2}${top_mem name 1}${color}$alignr${top_mem mem 1}
-${color2}${top_mem name 2}${color}$alignr${top_mem mem 2}
-${color2}${top_mem name 3}${color}$alignr${top_mem mem 3}
-${color2}${top_mem name 4}${color}$alignr${top_mem mem 4}
-${color2}${top_mem name 5}${color}$alignr${top_mem mem 5}
+${color2}${top_mem name 1}${color}$alignr${top_mem mem 1} %
+${color2}${top_mem name 2}${color}$alignr${top_mem mem 2} %
+${color2}${top_mem name 3}${color}$alignr${top_mem mem 3} %
+${color2}${top_mem name 4}${color}$alignr${top_mem mem 4} %
+${color2}${top_mem name 5}${color}$alignr${top_mem mem 5} %
 ]];
