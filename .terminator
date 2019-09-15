@@ -27,7 +27,7 @@
 [plugins]
 [profiles]
   [[default]]
-    background_color = "#202020"
+    background_color = "#222222"
     background_darkness = 0.9
     background_type = transparent
     copy_on_selection = True
