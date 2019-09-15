@@ -1,10 +1,10 @@
 directory: ~/Music
-plugins: info fetchart ftintitle zero scrub
+plugins: info fetchart lastgenre ftintitle zero
 duplicate_action: ask
 asciify_paths: yes
 original_date: yes
 zero:
-  keep_fields: title artist album year track genre images
+  keep_fields: title artist album date track genre genres country publisher
 ftintitle:
   drop: no
   auto: yes
