@@ -4,7 +4,7 @@ duplicate_action: ask
 asciify_paths: yes
 original_date: yes
 zero:
-  keep_fields: title artist album date year track genre images country publisher
+  keep_fields: title artist album date year track genre genres images country publisher label
 embedart:
   ifempty: yes
   remove_art_file: yes
