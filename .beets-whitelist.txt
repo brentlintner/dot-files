@@ -1,0 +1,43 @@
+blues
+classical
+country
+electronic
+disco
+drum and bass
+electro
+house
+trance
+folk
+hip hop
+rap rock
+jazz
+pop
+funk
+soul
+alternative rock
+grunge
+heavy metal
+alternative metal
+black metal
+nu metal
+death metal
+melodic death metal
+folk metal
+doom metal
+metalcore
+power metal
+progressive metal
+symphonic metal
+thrash metal
+groove metal
+avant-garde
+avant-garde
+post-punk
+hardcore
+mathcore
+post-hardcore
+punk rock
+ska
+rock
+psychedelic rock
+reggae

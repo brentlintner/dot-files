@@ -5,8 +5,10 @@ asciify_paths: yes
 original_date: yes
 lastgenre:
   source: artist
+  force: yes
   fallback: Unknown
   canonical: ~/.config/beets/genres.yml
+  whitelist: ~/.config/beets/whitelist.txt
 missing:
     format: $albumartist - $album - $title
     count: no

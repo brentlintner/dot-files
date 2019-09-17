@@ -1,7 +1,3 @@
-- avant-garde:
-    - experimental music
-    - lo-fi
-    - musique concrète
 - blues:
     - african blues
     - blues rock
@@ -154,15 +150,15 @@
         - electro backbeat
         - electro-grime
         - electropop
-    - electroacoustic:
-        - acousmatic music
-        - computer music
-        - electroacoustic improvisation
-        - field recording
-        - live coding
-        - live electronics
-        - soundscape composition
-        - tape music
+        - electroacoustic:
+            - acousmatic music
+            - computer music
+            - electroacoustic improvisation
+            - field recording
+            - live coding
+            - live electronics
+            - soundscape composition
+            - tape music
     - electronic rock:
         - baggy
         - madchester
@@ -209,6 +205,10 @@
     - hard nrg
     - new beat
     - house:
+        - progressive house/trance:
+            - disco house
+            - dream house
+            - space house
         - acid house
         - chicago house
         - deep house
@@ -244,10 +244,6 @@
     - boogie
     - dance-pop
     - progressive:
-        - progressive house/trance:
-            - disco house
-            - dream house
-            - space house
         - progressive breaks
         - progressive drum & bass
         - progressive techno
@@ -481,12 +477,11 @@
     - experimental rock
     - folk rock
     - garage rock
-    - glam rock
-    - hard rock
 - heavy metal:
     - glam metal
     - southern metal
 - alternative metal:
+    - funk metal
     - christian metal
     - industrial metal
     - death industrial
@@ -514,22 +509,15 @@
 - doom metal:
     - drone metal
     - atmospheric doom metal
-- funk metal
-- gothic metal
+    - sludge metal
 - metalcore:
     - deathcore
 - power metal:
     - speed metal
+    - gothic metal
 - progressive metal:
     - prog metal
     - djent
-- progressive rock:
-    - canterbury scene
-    - prog rock
-    - krautrock
-    - new prog
-    - rock in opposition
-- sludge metal
 - symphonic metal
 - thrash metal:
     - crossover thrash
@@ -537,12 +525,19 @@
 - avant-garde:
     - avant-garde metal
     - experimental metal
+    - experimental music
+    - lo-fi
+    - musique concrète
 - post-punk:
     - gothic rock
     - no wave
     - noise rock
 - hardcore:
     - uk hardcore
+    - grindcore:
+        - crustgrind
+        - noisegrind
+        - goregrind
     - mathcore:
         - math rock
         - bitpop
@@ -550,10 +545,6 @@
         - nintendocore
         - video game music
         - yorkshire bleeps and bass
-- grindcore:
-    - crustgrind
-    - noisegrind
-    - goregrind
 - post-hardcore:
     - emo
     - screamo
@@ -588,22 +579,28 @@
 - rock:
     - sufi rock
     - surf rock
+    - glam rock
+    - hard rock
     - classic rock
     - southern rock:
         - southern boon rock
+    - progressive rock:
+        - canterbury scene
+        - prog rock
+        - krautrock
+        - new prog
+        - rock in opposition
     - stoner rock
     - pop rock:
-      - new wave
-      - world fusion
-      - paisley underground
-      - power pop
+        - new wave
+        - world fusion
+        - paisley underground
+        - power pop
     - psychedelic rock:
         - acid rock
         - freakbeat
         - neo-psychedelia
         - raga rock
-- visual kei:
-    - nagoya kei
 - reggae:
     - roots reggae
     - reggae fusion
