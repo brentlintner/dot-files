@@ -5,6 +5,7 @@ asciify_paths: yes
 original_date: yes
 lastgenre:
   source: artist
+  fallback: Unknown
   canonical: ~/.config/beets/genres.yml
 missing:
     format: $albumartist - $album - $title

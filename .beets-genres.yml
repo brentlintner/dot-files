@@ -497,6 +497,7 @@
 - black metal:
     - atmospheric black metal
     - shoegaze
+    - blackgaze
     - melodic black metal
     - norwegian black metal
 - nu metal
@@ -511,19 +512,12 @@
     - celtic metal
     - medieval metal
 - doom metal:
-  - drone metal
-  - atmospheric doom metal
+    - drone metal
+    - atmospheric doom metal
 - funk metal
 - gothic metal
 - metalcore:
     - deathcore
-- mathcore:
-    - math rock
-    - bitpop
-    - game boy music
-    - nintendocore
-    - video game music
-    - yorkshire bleeps and bass
 - power metal:
     - speed metal
 - progressive metal:
@@ -549,6 +543,13 @@
     - noise rock
 - hardcore:
     - uk hardcore
+    - mathcore:
+        - math rock
+        - bitpop
+        - game boy music
+        - nintendocore
+        - video game music
+        - yorkshire bleeps and bass
 - grindcore:
     - crustgrind
     - noisegrind
