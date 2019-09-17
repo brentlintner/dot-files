@@ -1,8 +1,15 @@
 directory: ~/Music
-plugins: info fetchart embedart lastgenre ftintitle zero scrub
+plugins: info fetchart embedart lastgenre ftintitle zero scrub missing
 duplicate_action: ask
 asciify_paths: yes
 original_date: yes
+lastgenre:
+  source: artist
+  canonical: ~/.config/beets/genres.yml
+missing:
+    format: $albumartist - $album - $title
+    count: no
+    total: no
 zero:
   keep_fields: title artist album date year track genre genres images country publisher label
 embedart:
