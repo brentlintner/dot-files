@@ -3,7 +3,6 @@ classical
 country
 electronic
 disco
-drum and bass
 electro
 house
 trance
@@ -39,5 +38,4 @@ post-hardcore
 punk rock
 ska
 rock
-psychedelic rock
 reggae
