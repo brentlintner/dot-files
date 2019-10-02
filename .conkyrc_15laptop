@@ -1,0 +1,99 @@
+conky.config = {
+-- General
+	use_xft = true,
+	xftalpha = .5,
+	font = 'DejaVu Sans:size=11',
+	override_utf8_locale = true,
+	background = false,
+	update_interval = 2,
+	total_run_times = 0,
+	cpu_avg_samples = 5,
+	net_avg_samples = 5,
+	short_units = true,
+	pad_percents = 2,
+	top_name_width = 30,
+	uppercase = false,
+	text_buffer_size = 4096,
+	double_buffer = true,
+	imlib_cache_size = 10,
+
+-- Color scheme
+	default_color = '#D0D0D0',
+	color1 = '#FFFFFF',
+	color2 = '#FFFFFF',
+
+-- Window
+	own_window = true,
+	own_window_type = 'normal',
+	own_window_argb_visual = true,
+	own_window_argb_value = 255,
+	own_window_transparent = true,
+	own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+
+	alignment = 'top_right',
+	gap_x = 30,
+	gap_y = 40,
+	minimum_width = 300,
+	minimum_height = 600,
+
+-- Graph
+	draw_shades = false,
+	default_shade_color = '#FFFFFF',
+	draw_outline = false,
+  default_bar_height = 80,
+	default_outline_color = '#FFFFFF',
+	draw_borders = false,
+	draw_graph_borders = false,
+	default_graph_width = 300,
+  default_graph_height = 26,
+};
+
+conky.text = [[
+System $alignr$nodename@${execi 120 uname -r | sed 's/\-manjaro//i'}
+Time $alignr${time %H}:${time %M} EST
+Date $alignr${time %B} ${time %e}, ${time %Y}
+Users $alignr$user_names ($user_number)
+Uptime $alignr$uptime_short
+Procs $alignr$processes ($running_processes running)
+Load $alignr$loadavg
+
+${cpugraph 26,300 FFFFFF FFFFFF -l}
+Cpu $alignr${cpu}% (${execi 5 sensors | grep 'Package id' | cut -c16-18 | sed -E 's/\+//'}°C)
+Freq $alignr${freq_g}GHz
+Pch $alignr${execi 5 sensors | grep -A 2 'pch' | sed -E '/pch|device/d' | cut -c15-17 | sed -E 's/\+//'}°C
+Wifi $alignr${execi 5 sensors | grep -A 2 'iwlwifi' | sed -E '/wifi|device/d' | cut -c15-17 | sed -E 's/\+//'}°C
+Pwr $alignr${execi 5 sensors | grep -A 2 'acpi' | sed -E '/acpi|int/d' | cut -c15-17 | sed -E 's/\+//'}°C
+M2 ${alignr}${execi 2 cat /tmp/nvme0-temp}°C
+
+${memgraph 26,300 FFFFFF FFFFFF -l}
+Mem$alignr$mem/$memmax ($memperc%)
+
+${execigraph 2 "nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader,nounits"}
+Gpu $alignr${execi 2 nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader,nounits}% (${execi 5 nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader,nounits}°C)
+Mem $alignr${execi 2 nvidia-smi --query-gpu=memory.used --format=csv,noheader,nounits}M/${execi 2 nvidia-smi --query-gpu=memory.total --format=csv,noheader,nounits}M
+
+${diskiograph 26,300 FFFFFF FFFFFF -l}
+Read$alignr${diskio_read}
+Write$alignr${diskio_write}
+Root $alignr${fs_used /}/${fs_size /} (${fs_used_perc /}%)
+Boot $alignr${fs_used /boot/efi}/${fs_size /boot/efi} (${fs_used_perc /boot/efi}%)
+Home $alignr${fs_used /home}/${fs_size /home} (${fs_used_perc /home}%)
+${if_existing /proc/net/route wlp59s0}
+${upspeedgraph wlp59s0 26,145 FFFFFF FFFFFF}$alignr${downspeedgraph wlp59s0 26,145 FFFFFF FFFFFF}
+Up ${upspeed wlp59s0}${alignr}Down ${downspeed wlp59s0}
+Sent ${totalup wlp59s0}${alignr}Received ${totaldown wlp59s0}${endif}
+
+${color1}Proc$alignr${color1}Cpu %
+${top_mem name 1}$alignr${top cpu 1} %
+${top_mem name 2}$alignr${top cpu 2} %
+${top_mem name 3}$alignr${top cpu 3} %
+${top_mem name 4}$alignr${top cpu 4} %
+${top_mem name 5}$alignr${top cpu 5} %
+
+${color1}Proc$alignr${color1}${color1}Mem %
+${top_mem name 1}$alignr${top_mem mem 1} %
+${top_mem name 2}$alignr${top_mem mem 2} %
+${top_mem name 3}$alignr${top_mem mem 3} %
+${top_mem name 4}$alignr${top_mem mem 4} %
+${top_mem name 5}$alignr${top_mem mem 5} %
+]];
