@@ -31,8 +31,8 @@ conky.config = {
 	own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
 
 	alignment = 'top_right',
-	gap_x = 30,
-	gap_y = 40,
+	gap_x = 15,
+	gap_y = 35,
 	minimum_width = 300,
 	minimum_height = 600,
 
@@ -54,8 +54,11 @@ Time $alignr${time %H}:${time %M} EST
 Date $alignr${time %B} ${time %e}, ${time %Y}
 Users $alignr$user_names ($user_number)
 Uptime $alignr$uptime_short
-Procs $alignr$processes ($running_processes running)
-Load $alignr$loadavg
+Procs $alignr$processes ($running_processes running)${if_existing $battery_time}
+Battery $alignr${battery} $battery_time
+${else}
+Battery $alignr${battery}
+${endif}Load $alignr$loadavg
 
 ${cpugraph 26,300 FFFFFF FFFFFF -l}
 Cpu $alignr${cpu}% (${execi 5 sensors | grep 'Package id' | cut -c16-18 | sed -E 's/\+//'}°C)
