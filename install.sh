@@ -92,7 +92,8 @@ install() {
   cd "$HOME"
 
   if [ ! -z "$(command -v systemd-run)" ]; then
-    systemd-run --on-calendar=daily /bin/sh /home/brent/.dot-files/pkg-list.sh
+    as_root cp $HOME/.dot-files/pkg-list.sh /usr/local/bin/pkg-list
+    as_root systemd-run --on-calendar=daily /bin/sh /usr/local/bin/pkg-list
   fi
 
   # install ohmyzsh
