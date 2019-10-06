@@ -1,0 +1,11 @@
+[Unit]
+Description=Run powertop auto tune on boot
+#After=nvidia-persistenced
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/powertop --auto-tune
+StandardOutput=journal
+
+[Install]
+WantedBy=multi-user.target
