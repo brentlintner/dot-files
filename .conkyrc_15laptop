@@ -56,7 +56,7 @@ Users $alignr$user_names ($user_number)
 Uptime $alignr$uptime_short
 Procs $alignr$processes ($running_processes running)
 Battery $alignr${battery_time} ($battery_percent%)
-Sys $alignr${execi 2 "/home/brent/.dot-files/power-draw.sh"}W
+Sys $alignr${execi 2 "~/.dot-files/power-draw.sh"}W
 Gpu $alignr${execi 2 nvidia-smi --query-gpu=power.draw --format=csv,noheader,nounits}W
 Load $alignr$loadavg
 
