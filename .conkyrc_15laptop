@@ -54,26 +54,26 @@ Time $alignr${time %H}:${time %M} EST
 Date $alignr${time %B} ${time %e}, ${time %Y}
 Users $alignr$user_names ($user_number)
 Uptime $alignr$uptime_short
-Procs $alignr$processes ($running_processes running)${if_existing $battery_time}
-Battery $alignr${battery} $battery_time
-${else}
-Battery $alignr${battery}
-${endif}Load $alignr$loadavg
+Procs $alignr$processes ($running_processes running)
+Battery $alignr${battery_time} ($battery_percent%)
+Sys $alignr${execi 2 "/home/brent/.dot-files/power-draw.sh"}W
+Gpu $alignr${execi 2 nvidia-smi --query-gpu=power.draw --format=csv,noheader,nounits}W
+Load $alignr$loadavg
 
 ${cpugraph 26,300 FFFFFF FFFFFF -l}
-Cpu $alignr${cpu}% (${execi 5 sensors | grep 'Package id' | cut -c16-18 | sed -E 's/\+//'}°C)
+Cpu $alignr${cpu}% (${execi 2 sensors | grep 'Package id' | cut -c16-18 | sed -E 's/\+//'}°C)
 Freq $alignr${freq_g}GHz
-Pch $alignr${execi 5 sensors | grep -A 2 'pch' | sed -E '/pch|device/d' | cut -c15-17 | sed -E 's/\+//'}°C
-Wifi $alignr${execi 5 sensors | grep -A 2 'iwlwifi' | sed -E '/wifi|device/d' | cut -c15-17 | sed -E 's/\+//'}°C
-Pwr $alignr${execi 5 sensors | grep -A 2 'acpi' | sed -E '/acpi|int/d' | cut -c15-17 | sed -E 's/\+//'}°C
+Pch $alignr${execi 2 sensors | grep -A 2 'pch' | sed -E '/pch|device/d' | cut -c15-17 | sed -E 's/\+//'}°C
+Wifi $alignr${execi 2 sensors | grep -A 2 'iwlwifi' | sed -E '/wifi|device/d' | cut -c15-17 | sed -E 's/\+//'}°C
 M2 ${alignr}${execi 2 cat /tmp/nvme0-temp}°C
+
+${execigraph 2 "nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader,nounits"}
+Gpu $alignr${execi 2 nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader,nounits}% (${execi 2 nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader,nounits}°C)
+Mem $alignr${execi 2 nvidia-smi --query-gpu=memory.used --format=csv,noheader,nounits}M/${execi 2 nvidia-smi --query-gpu=memory.total --format=csv,noheader,nounits}M
+Freq $alignr${execi 2 nvidia-smi --query-gpu=clocks.gr --format=csv,noheader,nounits}MHz / $alignr${execi 2 nvidia-smi --query-gpu=clocks.mem --format=csv,noheader,nounits}MHz
 
 ${memgraph 26,300 FFFFFF FFFFFF -l}
 Mem$alignr$mem/$memmax ($memperc%)
-
-${execigraph 2 "nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader,nounits"}
-Gpu $alignr${execi 2 nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader,nounits}% (${execi 5 nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader,nounits}°C)
-Mem $alignr${execi 2 nvidia-smi --query-gpu=memory.used --format=csv,noheader,nounits}M/${execi 2 nvidia-smi --query-gpu=memory.total --format=csv,noheader,nounits}M
 
 ${diskiograph 26,300 FFFFFF FFFFFF -l}
 Read$alignr${diskio_read}
