@@ -66,6 +66,8 @@ Freq $alignr${freq_g}GHz
 Pch $alignr${execi 2 sensors | grep -A 2 'pch' | sed -E '/pch|device/d' | cut -c15-17 | sed -E 's/\+//'}°C
 Wifi $alignr${execi 2 sensors | grep -A 2 'iwlwifi' | sed -E '/wifi|device/d' | cut -c15-17 | sed -E 's/\+//'}°C
 M2 ${alignr}${execi 2 cat /tmp/nvme0-temp}°C
+Fan1 ${alignr}${execi 2 sensors | grep 'fan1' | cut -c14-21}
+Fan2 ${alignr}${execi 2 sensors | grep 'fan2' | cut -c14-21}
 
 ${execigraph 2 "nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader,nounits"}
 Gpu $alignr${execi 2 nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader,nounits}% (${execi 2 nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader,nounits}°C)
