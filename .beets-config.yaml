@@ -5,7 +5,7 @@ asciify_paths: yes
 original_date: yes
 lastgenre:
   source: artist
-  force: yes
+  force: no
   fallback: Unknown
   canonical: ~/.config/beets/genres.yml
   whitelist: ~/.config/beets/whitelist.txt
