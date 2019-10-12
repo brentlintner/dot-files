@@ -1,4 +1,4 @@
-#/usr/bin/env sh
+#!/usr/bin/env sh
 
 BACKUP_FILE=/home/brent/.pacman-installed.txt
 
