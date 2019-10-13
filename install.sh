@@ -61,7 +61,7 @@ install_pkgs() {
     brew)
       brew tap homebrew/cask-fonts
       brew cask install font-inconsolata font-dejavu-sans
-      brew install -y $BRW_PKGS
+      brew install $BRW_PKGS
       ;;
     dnf)
       as_root dnf -y install $DNF_PKGS
