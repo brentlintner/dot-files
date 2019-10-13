@@ -59,7 +59,7 @@ install_pkgs() {
       yay --noconfirm -S $PAC_PKGS
       ;;
     brew)
-      brew tap caskroom/fonts
+      brew tap homebrew/cask-fonts
       brew cask install font-inconsolata font-dejavu-sans
       brew install -y $BRW_PKGS
       ;;
