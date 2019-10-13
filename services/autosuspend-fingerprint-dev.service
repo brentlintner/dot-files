@@ -1,0 +1,10 @@
+[Unit]
+Description=Autosuspend fingerprint device
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/disable-fingerprint-dev
+StandardOutput=journal
+
+[Install]
+WantedBy=multi-user.target

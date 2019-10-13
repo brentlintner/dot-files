@@ -2,6 +2,7 @@
 Description=Sync current core and aur pkg list to a file in my home dir
 
 [Service]
+Type=oneshot
 ExecStart=/usr/local/bin/pkg-list-run-daily
 StandardOutput=journal
 
