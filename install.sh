@@ -93,7 +93,7 @@ install() {
 
   # install ohmyzsh
   rm -rf "$HOME/.oh-my-zsh"
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sed 's/^\s*env zsh -l$//g')"
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sed 's/^\s*.*zsh -l$//g')"
 
   # zsh theme
   ln -sf "$HOME/.dot-files/brent.zsh-theme" "$HOME/.oh-my-zsh/themes/brent.zsh-theme"
@@ -133,7 +133,10 @@ install() {
   # vscode
   ln -sf "$HOME/.dot-files/vscode.settings.json" "$HOME/.config/Code/User/settings.json"
   ln -sf "$HOME/.dot-files/vscode.keybindings.json" "$HOME/.config/Code/User/keybindings.json"
-  code --install-extension vscodevim.vim
+
+  if [ ! -z "$(command -v code)" ]; then
+    code --install-extension vscodevim.vim
+  fi
 
   # typora
   ln -sf "$HOME/.dot-files/typora.user.conf.json" "$HOME/.config/Typora/conf/conf.user.json"
