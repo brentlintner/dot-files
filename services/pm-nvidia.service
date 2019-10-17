@@ -1,0 +1,10 @@
+[Unit]
+Description=Set nvidia pci pm to auto
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/enable-nvidia-pm
+StandardOutput=journal
+
+[Install]
+WantedBy=graphical.target
