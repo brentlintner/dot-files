@@ -93,12 +93,10 @@ ${top_mem name 1}$alignr${top cpu 1} %
 ${top_mem name 2}$alignr${top cpu 2} %
 ${top_mem name 3}$alignr${top cpu 3} %
 ${top_mem name 4}$alignr${top cpu 4} %
-${top_mem name 5}$alignr${top cpu 5} %
 
 ${color1}Proc$alignr${color1}${color1}Mem %
 ${top_mem name 1}$alignr${top_mem mem 1} %
 ${top_mem name 2}$alignr${top_mem mem 2} %
 ${top_mem name 3}$alignr${top_mem mem 3} %
 ${top_mem name 4}$alignr${top_mem mem 4} %
-${top_mem name 5}$alignr${top_mem mem 5} %
 ]];
