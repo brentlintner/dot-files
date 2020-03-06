@@ -51,6 +51,9 @@ alias git-delete-merged='git branch --merged | grep -v "\*" | xargs -n 1 git bra
 alias g="git s"
 alias gl="git l"
 alias gpr="hub pull-request"
+alias grp="grep -rni"
+
+alias sync-gdm-theme="cd /usr/share/themes/mako/gnome-shell && sudo glib-compile-resources --target=/usr/share/gnome-shell/gnome-shell-theme.gresource gnome-shell-theme.gresource.xml && cd -"
 
 alias static-server="python -m http.server 8000"
 alias tlp-mode="sudo tlp stat | grep -iE '^mode'"
