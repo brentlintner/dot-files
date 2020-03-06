@@ -63,6 +63,7 @@ Load $alignr$loadavg
 ${cpugraph 26,300 FFFFFF FFFFFF -l}
 Cpu $alignr${cpu}% (${execi 2 sensors | grep 'Package id' | cut -c16-18 | sed -E 's/\+//'}°C)
 Freq $alignr${freq_g}GHz
+Mem$alignr$mem/$memmax ($memperc%)
 Pch $alignr${execi 2 sensors | grep -A 2 'pch' | sed -E '/pch|device/d' | cut -c15-17 | sed -E 's/\+//'}°C
 Wifi $alignr${execi 2 sensors | grep -A 2 'iwlwifi' | sed -E '/wifi|device/d' | cut -c15-17 | sed -E 's/\+//'}°C
 M2 ${alignr}${execi 2 cat /tmp/nvme0-temp}°C
@@ -73,9 +74,6 @@ ${execigraph 2 "nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader,nou
 Gpu $alignr${execi 2 nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader,nounits}% (${execi 2 nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader,nounits}°C)
 Mem $alignr${execi 2 nvidia-smi --query-gpu=memory.used --format=csv,noheader,nounits}M/${execi 2 nvidia-smi --query-gpu=memory.total --format=csv,noheader,nounits}M
 Freq $alignr${execi 2 nvidia-smi --query-gpu=clocks.gr --format=csv,noheader,nounits}MHz / $alignr${execi 2 nvidia-smi --query-gpu=clocks.mem --format=csv,noheader,nounits}MHz
-
-${memgraph 26,300 FFFFFF FFFFFF -l}
-Mem$alignr$mem/$memmax ($memperc%)
 
 ${diskiograph 26,300 FFFFFF FFFFFF -l}
 Read$alignr${diskio_read}
