@@ -7,6 +7,10 @@ if [ -x rbenv ]; then
   eval "$(rbenv init -)"
 fi
 
+if [ -f /usr/share/nvm/init-nvm.sh ]; then
+  source /usr/share/nvm/init-nvm.sh
+fi
+
 # load asdf (https://github.com/asdf-vm/asdf)
 if [ -d $HOME/.asdf ]; then
   autoload -Uz compinit && compinit

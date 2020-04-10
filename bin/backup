@@ -32,7 +32,7 @@ run() {
   rsync -e "$ssh_opts" --dry-run $rsync_opts "$from_path" "$ssh_url$ssh_folder"
   echo ""
   read -p "Does this look OK?"
-  time rsync -e "$ssh_opts"  $rsync_opts "$from_path" "$ssh_url$ssh_folder"
+  rsync -e "$ssh_opts"  $rsync_opts "$from_path" "$ssh_url$ssh_folder"
 }
 
 run

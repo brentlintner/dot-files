@@ -54,10 +54,11 @@ Time $alignr${time %H}:${time %M} EST
 Date $alignr${time %B} ${time %e}, ${time %Y}
 Users $alignr$user_names ($user_number)
 Uptime $alignr$uptime_short
+Updates $alignr ${execi 30 ((yay --color none -Qu | wc -l) || 0)}
 Procs $alignr$processes ($running_processes running)
 Battery $alignr${battery_time} ($battery_percent%)
-Sys $alignr${execi 2 "~/.dot-files/power-draw.sh"}W
-Gpu $alignr${execi 2 nvidia-smi --query-gpu=power.draw --format=csv,noheader,nounits}W
+Sys $alignr ${execi 2 "~/.dot-files/power-draw.sh"}W
+Gpu $alignr ${execi 2 nvidia-smi --query-gpu=power.draw --format=csv,noheader,nounits}W
 Load $alignr$loadavg
 
 ${cpugraph 26,300 FFFFFF FFFFFF -l}
@@ -91,10 +92,22 @@ ${top_mem name 1}$alignr${top cpu 1} %
 ${top_mem name 2}$alignr${top cpu 2} %
 ${top_mem name 3}$alignr${top cpu 3} %
 ${top_mem name 4}$alignr${top cpu 4} %
+${top_mem name 5}$alignr${top cpu 5} %
+${top_mem name 6}$alignr${top cpu 6} %
+${top_mem name 7}$alignr${top cpu 7} %
+${top_mem name 8}$alignr${top cpu 8} %
+${top_mem name 9}$alignr${top cpu 9} %
+${top_mem name 10}$alignr${top cpu 10} %
 
 ${color1}Proc$alignr${color1}${color1}Mem %
 ${top_mem name 1}$alignr${top_mem mem 1} %
 ${top_mem name 2}$alignr${top_mem mem 2} %
 ${top_mem name 3}$alignr${top_mem mem 3} %
 ${top_mem name 4}$alignr${top_mem mem 4} %
+${top_mem name 5}$alignr${top_mem mem 5} %
+${top_mem name 6}$alignr${top_mem mem 6} %
+${top_mem name 7}$alignr${top_mem mem 7} %
+${top_mem name 8}$alignr${top_mem mem 8} %
+${top_mem name 9}$alignr${top_mem mem 9} %
+${top_mem name 10}$alignr${top_mem mem 10} %
 ]];
