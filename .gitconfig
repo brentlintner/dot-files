@@ -5,7 +5,7 @@
 
 [commit]
 	template = ~/.gitmessage
-	gpgsign = false
+	gpgsign = true
 
 [merge]
 	keepbackup = false
