@@ -1,0 +1,3 @@
+#!/usr/bin/env sh	
+virt-manager --connect qemu:///system --show-domain-console Windows
+pkexec --user root virsh start Windows
