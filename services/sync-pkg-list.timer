@@ -1,0 +1,9 @@
+[Unit]
+Description=Sync packages hourly and on boot
+
+[Timer]
+OnBootSec=5min
+OnUnitActiveSec=60min
+
+[Install]
+WantedBy=timers.target
