@@ -11,6 +11,10 @@ if [ -f /usr/share/nvm/init-nvm.sh ]; then
   source /usr/share/nvm/init-nvm.sh
 fi
 
+if [ ! -z "$(which nvm)" ]; then
+  nvm use > /dev/null 2>&1
+fi
+
 # load asdf (https://github.com/asdf-vm/asdf)
 if [ -d $HOME/.asdf ]; then
   autoload -Uz compinit && compinit
