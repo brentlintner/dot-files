@@ -50,6 +50,7 @@ alias gk="tig"
 alias git-view-merged='git branch --merged | grep -v "\*"'
 alias git-delete-merged='git branch --merged | grep -v "\*" | xargs -n 1 git branch -d'
 alias git="hub"
+alias git-sync="$HOME/.dot-files/bin/git-sync.sh"
 alias g="git s"
 alias gl="git l"
 alias gpr="hub pull-request"
