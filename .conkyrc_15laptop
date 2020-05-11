@@ -86,6 +86,10 @@ ${if_existing /proc/net/route wlp59s0}
 ${upspeedgraph wlp59s0 26,145 FFFFFF FFFFFF}$alignr${downspeedgraph wlp59s0 26,145 FFFFFF FFFFFF}
 Up ${upspeed wlp59s0}${alignr}Down ${downspeed wlp59s0}
 Sent ${totalup wlp59s0}${alignr}Received ${totaldown wlp59s0}${endif}
+${if_existing /proc/net/route enp0s20f0u1}
+${upspeedgraph enp0s20f0u1 26,145 FFFFFF FFFFFF}$alignr${downspeedgraph enp0s20f0u1 26,145 FFFFFF FFFFFF}
+Up ${upspeed enp0s20f0u1}${alignr}Down ${downspeed enp0s20f0u1}
+Sent ${totalup enp0s20f0u1}${alignr}Received ${totaldown enp0s20f0u1}${endif}
 
 ${color1}Proc$alignr${color1}Cpu %
 ${top_mem name 1}$alignr${top cpu 1} %
