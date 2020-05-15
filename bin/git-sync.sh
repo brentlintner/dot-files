@@ -11,6 +11,6 @@ git rebase $MAIN_BRANCH
 
 BRANCHES=`git branch --merged | grep -v "\*" | grep -v $MAIN_BRANCH`
 
-if [ ! -z "$BRANCHES"]; then
-  xargs -n 1 git branch -d
+if [ ! -z "$BRANCHES" ]; then
+  git branch -d $BRANCHES
 fi
