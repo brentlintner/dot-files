@@ -18,5 +18,10 @@ if [ -d $HOME/.asdf ]; then
   . $HOME/.asdf/asdf.sh
 fi
 
+if [ ! -z $HOME/.dot-files/npm-completion ]; then
+  npm completion > $HOME/.dot-files/npm-completion
+fi
+source $HOME/.dot-files/npm-completion
+
 source $HOME/.dot-files/sh-env.sh
 source $HOME/.dot-files/sh-aliases.sh
