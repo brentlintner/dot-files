@@ -22,5 +22,8 @@
     "editor.renderLineHighlight": "none",
     "editor.highlightActiveIndentGuide": false,
     "editor.folding": false,
-    "editor.selectionHighlight": false
+    "editor.selectionHighlight": false,
+    "[html]": {
+        "editor.defaultFormatter": "ms-vsliveshare.vsliveshare"
+    }
 }
