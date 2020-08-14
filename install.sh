@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-set -xe
+set -e
 
 OS=$(uname -s)
 
