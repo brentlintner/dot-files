@@ -70,6 +70,10 @@ alias egrep='egrep --color=auto'
 alias ll='ls -l --color=auto'
 alias la='ls -la --color=auto'
 alias ls='ls --color=auto'
+alias du='ncdu'
+alias duu='/usr/bin/du'
+alias find='fd'
+alias man='tldr'
 
 alias for-each="$HOME/.dot-files/bin/for-each"
 alias for-all="$HOME/.dot-files/bin/for-all"
