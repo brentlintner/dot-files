@@ -72,6 +72,7 @@ alias la='ls -la --color=auto'
 alias ls='ls --color=auto'
 
 alias for-each="$HOME/.dot-files/bin/for-each"
+alias for-all="$HOME/.dot-files/bin/for-all"
 alias git-for-each="$HOME/.dot-files/bin/git-for-each"
 alias backup-user="deja-dup --backup"
 alias backup-path="$HOME/.dot-files/bin/backup"
