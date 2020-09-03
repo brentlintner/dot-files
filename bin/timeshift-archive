@@ -25,8 +25,6 @@ main() {
 
   duplicity $duplicity_opts $timeshift_backup_folder "file://$full_backup_path/."
 
-  duplicity remove-older-than 1M
-
   success=$?
 
   if [ $success -ne 0 ]; then
@@ -35,14 +33,16 @@ main() {
     title="OS Backup: Success"
   fi
 
-  chmod g+r,o+r $full_backup_path/*
-
   su brent -c "notify-send \"$title\" \"\" --icon=timeshift"
 
   if [ $success -ne 0 ]; then
     echo "Duplicity exited with status ($success)"
     exit 1
   fi
+
+  duplicity remove-older-than 1M
+
+  chmod g+r,o+r $full_backup_path/*
 }
 
 main
