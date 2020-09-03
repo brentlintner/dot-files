@@ -77,6 +77,7 @@ alias duu='/usr/bin/du'
 alias find='fd'
 alias man='tldr'
 
+alias confirm="$HOME/.dot-files/bin/confirm"
 alias for-each="$HOME/.dot-files/bin/for-each"
 alias for-all="$HOME/.dot-files/bin/for-all"
 alias git-for-each="$HOME/.dot-files/bin/git-for-each"
