@@ -23,7 +23,9 @@ main() {
 
   echo "Backing up $timeshift_backup_folder to $full_backup_path"
 
-  duplicity incremental $duplicity_opts $timeshift_backup_folder "file://$full_backup_path/."
+  duplicity $duplicity_opts $timeshift_backup_folder "file://$full_backup_path/."
+
+  duplicity remove-older-than 1M
 
   success=$?
 

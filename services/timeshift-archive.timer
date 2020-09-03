@@ -1,5 +1,5 @@
 [Unit]
-Description=Run timeshift-archive service every 1 days and at boot
+Description=Run timeshift-archive service every 7 days and at boot
 
 [Timer]
 OnBootSec=60min
