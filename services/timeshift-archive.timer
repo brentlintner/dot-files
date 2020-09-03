@@ -1,0 +1,9 @@
+[Unit]
+Description=Run timeshift-archive service every 1 days and at boot
+
+[Timer]
+OnBootSec=60min
+OnCalendar=Mon *-*-* 00:00:00
+
+[Install]
+WantedBy=timers.target

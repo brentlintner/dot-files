@@ -1,0 +1,11 @@
+[Unit]
+Description=Archive the root OS backup folder to brent's home folder
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/timeshift-archive
+RemainAfterExit=yes
+Environment="DISPLAY=:0" "XAUTHORITY=/run/user/1000/gdm/Xauthority" "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus"
+
+[Install]
+WantedBy=multi-user.target

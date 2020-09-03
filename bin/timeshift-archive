@@ -1,0 +1,46 @@
+#!/usr/bin/env sh
+
+print_help=$1
+backup_folder=/home/brent/Backup
+timeshift_backup_folder=/home/timeshift
+duplicity_opts="--no-encryption"
+
+set -e
+
+usage() {
+  echo "timeshift-archive [-h]"
+  echo "  => Backup timeshift backup to brent's home folder";
+}
+
+main() {
+  if [ "$print_help" = "-h" ] || [ "$print_help" = "--help" ]; then
+    usage; exit 0;
+  fi
+
+  full_backup_path=$(realpath $backup_folder)
+
+  su brent -c "notify-send \"OS Backup: Started\" \"\" --icon=timeshift"
+
+  echo "Backing up $timeshift_backup_folder to $full_backup_path"
+
+  duplicity incremental $duplicity_opts $timeshift_backup_folder "file://$full_backup_path/."
+
+  success=$?
+
+  if [ $success -ne 0 ]; then
+    title="OS Backup: Failed"
+  else
+    title="OS Backup: Success"
+  fi
+
+  chmod g+r,o+r $full_backup_path/*
+
+  su brent -c "notify-send \"$title\" \"\" --icon=timeshift"
+
+  if [ $success -ne 0 ]; then
+    echo "Duplicity exited with status ($success)"
+    exit 1
+  fi
+}
+
+main
