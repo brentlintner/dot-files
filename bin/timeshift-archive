@@ -1,15 +1,35 @@
 #!/usr/bin/env sh
 
+set -e
+
 print_help=$1
 backup_folder=/home/brent/Backup
 timeshift_backup_folder=/home/timeshift
 duplicity_opts="--no-encryption"
 
-set -e
-
 usage() {
   echo "timeshift-archive [-h]"
   echo "  => Backup timeshift backup to brent's home folder";
+}
+
+check_status() {
+  if [ $backup_status -ne 0 ]; then
+    title="OS Backup: Failed"
+  else
+    title="OS Backup: Success"
+  fi
+
+  su brent -c "notify-send \"$title\" \"\" --icon=timeshift"
+
+  if [ $backup_status -ne 0 ]; then
+    echo "Duplicity exited with status ($backup_status)"
+    exit 1
+  fi
+}
+
+bad_status() {
+  su brent -c "notify-send \"OS Backup: Failed\" \"\" --icon=timeshift"
+  exit 1
 }
 
 main() {
@@ -18,31 +38,22 @@ main() {
   fi
 
   full_backup_path=$(realpath $backup_folder)
+  file_uri="file://$full_backup_path/."
 
   su brent -c "notify-send \"OS Backup: Started\" \"\" --icon=timeshift"
 
   echo "Backing up $timeshift_backup_folder to $full_backup_path"
 
-  duplicity $duplicity_opts $timeshift_backup_folder "file://$full_backup_path/."
+  duplicity $duplicity_opts $timeshift_backup_folder $file_uri
 
-  success=$?
+  backup_status=$?
+  check_status
 
-  if [ $success -ne 0 ]; then
-    title="OS Backup: Failed"
-  else
-    title="OS Backup: Success"
-  fi
-
-  su brent -c "notify-send \"$title\" \"\" --icon=timeshift"
-
-  if [ $success -ne 0 ]; then
-    echo "Duplicity exited with status ($success)"
-    exit 1
-  fi
-
-  duplicity remove-older-than 1M
+  duplicity remove-older-than 1M $file_uri
 
   chmod g+r,o+r $full_backup_path/*
 }
+
+trap bad_status 0 1 2 3 13 15  # Exit, HUP, INT, QUIT, PIPE, TERM
 
 main

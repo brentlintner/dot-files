@@ -1,8 +1,7 @@
 [Unit]
-Description=Run timeshift-archive service every 7 days and at boot
+Description=Run timeshift-archive service every 7 days
 
 [Timer]
-OnBootSec=60min
 OnCalendar=Mon *-*-* 00:00:00
 
 [Install]
