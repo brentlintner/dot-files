@@ -12,24 +12,8 @@ usage() {
   echo "  => Backup timeshift backup to brent's home folder";
 }
 
-check_status() {
-  if [ $backup_status -ne 0 ]; then
-    title="OS Backup: Failed"
-  else
-    title="OS Backup: Success"
-  fi
-
-  su brent -c "notify-send \"$title\" \"\" --icon=timeshift"
-
-  if [ $backup_status -ne 0 ]; then
-    echo "Duplicity exited with status ($backup_status)"
-    exit 1
-  fi
-}
-
-bad_status() {
-  su brent -c "notify-send \"OS Backup: Failed\" \"\" --icon=timeshift"
-  exit 1
+post_command_failed() {
+  su brent -c "notify-send \"OS Backup: Service Exited Badly\"\" --icon=timeshift"
 }
 
 main() {
@@ -47,13 +31,25 @@ main() {
   duplicity $duplicity_opts $timeshift_backup_folder $file_uri
 
   backup_status=$?
-  check_status
+
+  if [ $backup_status -ne 0 ]; then
+    title="OS Backup: Failed"
+  else
+    title="OS Backup: Success"
+  fi
+
+  su brent -c "notify-send \"$title\" \"\" --icon=timeshift"
+
+  if [ $backup_status -ne 0 ]; then
+    echo "Duplicity exited with status ($backup_status)"
+    exit 1
+  fi
 
   duplicity remove-older-than 1M $file_uri
 
   chmod g+r,o+r $full_backup_path/*
 }
 
-trap bad_status 0 1 2 3 13 15  # Exit, HUP, INT, QUIT, PIPE, TERM
+trap post_command_failed INT
 
 main
