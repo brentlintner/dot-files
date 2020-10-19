@@ -5,7 +5,7 @@ set -e
 OS=$(uname -s)
 
 APT_PKGS="vim zsh bash neovim python-pip python-neovim optipng python3 curl conky parallel nodejs ruby ruby-dev redis-server postgresql terminator build-essential gnome-shell-extensions gnome-tweak-tool git fonts-dejavu fonts-inconsolata automake autoconf libreadline-dev libncurses-dev libssl-dev libyaml-dev libxslt-dev libffi-dev libtool unixodbc-dev"
-PAC_PKGS="vim zsh zsh-autosuggestions zsh-completions nvme-cli bash neovim python-neovim python2-neovim optipng python3 curl conky parallel nodejs ruby redis postgresql terminator base-devel gnome-shell-extensions git ttf-inconsolata ttf-dejavu gnome-tweaks"
+PAC_PKGS="vim zsh zsh-autosuggestions zsh-completions nvme-cli bash neovim python-neovim python2-neovim optipng python3 curl conky parallel nodejs npm ruby redis postgresql terminator base-devel gnome-shell-extensions git ttf-inconsolata ttf-dejavu gnome-tweaks"
 DNF_PKGS="vim zsh bash neovim python-neovim optipng python3 curl conky parallel nodejs ruby ruby-dev redis postgresql terminator gnome-tweak-tool gnome-shell-extension-user-theme git dejavu-sans-fonts levien-inconsolata-fonts automake autoconf readline-devel ncurses-devel openssl-devel libyaml-devel libxslt-devel libffi-devel libtool unixODBC-devel"
 BRW_PKGS="vim zsh bash neovim nodejs parallel ruby git redis postgresql coreutils automake autoconf openssl libyaml readline libxslt libtool unixodbc"
 ZYP_PKGS="vim zsh bash neovim python-neovim python3 curl conky gnu_parallel nodejs ruby redis postgresql terminator gnome-tweak-tool git dejavu-fonts google-inconsolata-fonts automake autoconf readline-devel ncurses-devel openssl-devel libyaml-devel libxslt-devel libffi-devel libtool unixODBC-devel"
