@@ -75,6 +75,7 @@ alias ls='ls --color=auto'
 alias du='ncdu'
 alias duu='/usr/bin/du'
 alias find='fd'
+alias mann='/usr/bin/man'
 alias man='tldr'
 
 alias confirm="$HOME/.dot-files/bin/confirm"
