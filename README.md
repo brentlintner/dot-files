@@ -29,8 +29,12 @@ Note: A number of packages shown in screenshots are not installed by this script
 
 *zsh theme*
 
-![alt text](https://raw.githubusercontent.com/brentlintner/dot-files/master/examples/terminator+zsh.png)
+![alt text](examples/terminator+zsh.png)
 
 *bash theme*
 
-![alt text](https://raw.githubusercontent.com/brentlintner/dot-files/master/examples/terminator+bash.png)
+![alt text](examples/terminator+bash.png)
+
+*ps1 theme (windows terminal)*
+
+![alt text](examples/winterminal+ps1.png)
