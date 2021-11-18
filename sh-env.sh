@@ -4,6 +4,8 @@ export LANG=en_CA.UTF-8
 export ARCHFLAGS="-arch x86_64"
 export SSH_KEY_PATH="~/.ssh/id_rsa"
 
+export PAGER="most"
+
 export GTK_THEME=mako
 
 export HEROKU_NOTIFICATIONS=0
@@ -32,3 +34,9 @@ export DEBFULLNAME="Brent Lintner"
 export DEBEMAIL="brent.lintner@gmail.com"
 
 export PATH="$PATH:$HOME/.composer/vendor/bin"
+
+export PATH="$PATH:$HOME/.fluttersdk/bin"
+
+#export PATH="$PATH:$HOME/src/fuchsia/.jiri_root/bin"
+
+
