@@ -24,11 +24,17 @@ main() {
   full_backup_path=$(realpath $backup_folder)
   file_uri="file://$full_backup_path/."
 
+  echo "Beginning OS backup script"
+
   su brent -c "notify-send \"OS Backup: Started\" \"\" --icon=timeshift"
+
+  echo "Removing previous backup in $full_backup_path"
+
+  rm -rf $full_backup_path/*
 
   echo "Backing up $timeshift_backup_folder to $full_backup_path"
 
-  duplicity $duplicity_opts $timeshift_backup_folder $file_uri
+  duplicity full $duplicity_opts $timeshift_backup_folder $file_uri
 
   backup_status=$?
 
@@ -44,8 +50,6 @@ main() {
     echo "Duplicity exited with status ($backup_status)"
     exit 1
   fi
-
-  duplicity remove-older-than 1M $file_uri
 
   chmod g+r,o+r $full_backup_path/*
 }

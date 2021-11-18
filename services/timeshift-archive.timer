@@ -1,8 +1,8 @@
 [Unit]
-Description=Run timeshift-archive service every 7 days
+Description=Run timeshift-archive service every month
 
 [Timer]
-OnCalendar=Mon *-*-* 00:00:00
+OnCalendar=*-*-01 00:00:00
 
 [Install]
 WantedBy=timers.target
