@@ -60,7 +60,7 @@ alias grp="grep -rni"
 
 alias sync-gdm-theme="cd /usr/share/themes/mako/gnome-shell && sudo glib-compile-resources --target=/usr/share/gnome-shell/gnome-shell-theme.gresource gnome-shell-theme.gresource.xml && cd -"
 
-alias static-server="python -m http.server 8000"
+alias static-server="python -m http.server 8002"
 alias tlp-mode="sudo tlp stat | grep -iE '^mode'"
 alias cron="crontab"
 alias ackg="ack --color --nopager"
@@ -69,8 +69,8 @@ alias mk="mkdir"
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
-alias ll='ls -l --color=auto'
-alias la='ls -la --color=auto'
+alias ll='ls -lh --color=auto'
+alias la='ls -lah --color=auto'
 alias ls='ls --color=auto'
 alias du='ncdu'
 alias duu='/usr/bin/du'
@@ -84,7 +84,7 @@ alias for-all="$HOME/.dot-files/bin/for-all"
 alias git-for-each="$HOME/.dot-files/bin/git-for-each"
 alias backup-user="deja-dup --backup"
 alias backup-path="$HOME/.dot-files/bin/backup"
-alias backup-music="$HOME/.dot-files/bin/backup $HOME/Music bnixbook-music"
+alias backup-music="$HOME/.dot-files/bin/backup /mnt/games/Music bnixbook-music"
 alias android-music-sync="$HOME/.dot-files/bin/android-music-sync"
 alias vim="nvim"
 alias vim-clean-plugins="vim +PluginClean +qall"
