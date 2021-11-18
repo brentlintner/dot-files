@@ -1,7 +1,7 @@
 [user]
 	name = Brent Lintner
 	email = brent.lintner@gmail.com
-	signingkey = 196E9B681049F5ED
+	signingkey = 0A6548DF66174277
 
 [commit]
 	template = ~/.gitmessage
