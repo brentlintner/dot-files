@@ -25,3 +25,5 @@ source $HOME/.dot-files/npm-completion
 
 source $HOME/.dot-files/sh-env.sh
 source $HOME/.dot-files/sh-aliases.sh
+
+eval `keychain --quiet --eval --agents ssh id_rsa`
