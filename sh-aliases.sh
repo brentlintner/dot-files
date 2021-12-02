@@ -49,7 +49,6 @@ alias gitk="tig"
 alias gk="tig"
 alias git-view-merged='git branch --merged | grep -v "\*"'
 alias git-delete-merged='git branch --merged | grep -v "\*" | xargs -n 1 git branch -d'
-alias git="hub"
 alias git-sync="$HOME/.dot-files/bin/git-sync.sh"
 alias git-ignore="git update-index --assume-unchanged"
 alias git-unignore="git update-index --no-assume-unchanged"
