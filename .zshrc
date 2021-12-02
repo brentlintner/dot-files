@@ -2,15 +2,18 @@
 set -o ignoreeof
 export IGNOREEOF=42
 
-# load ohmyzsh (https://github.com/robbyrussell/oh-my-zsh)
+# load ohmyzsh (https://github.com/ohmyzsh/ohmyzsh.git)
 export ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="brent"
 plugins=(
+  zsh-completions
+  zsh-autosuggestions
   git
   heroku
   npm
   asdf
 )
+autoload -U compinit && compinit
 source $ZSH/oh-my-zsh.sh
 
 # load asdf (https://github.com/asdf-vm/asdf)
