@@ -28,10 +28,10 @@ run() {
 
   rsync_opts="-h -r --delete-during --rsync-path=/usr/local/bin/rsync -t -v --progress"
 
-  #echo "connecting to $ssh_url$ssh_folder... [DRY RUN]"
-  #rsync -e "$ssh_opts" --dry-run $rsync_opts "$from_path" "$ssh_url$ssh_folder"
-  #echo ""
-  #read -p "Does this look OK?"
+  echo "connecting to $ssh_url$ssh_folder... [DRY RUN]"
+  rsync -e "$ssh_opts" --dry-run $rsync_opts "$from_path" "$ssh_url$ssh_folder"
+  echo ""
+  read -p "Does this look OK?"
   rsync -e "$ssh_opts"  $rsync_opts "$from_path" "$ssh_url$ssh_folder"
 }
 
