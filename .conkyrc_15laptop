@@ -5,7 +5,7 @@ conky.config = {
 	font = 'DejaVu Sans:size=11',
 	override_utf8_locale = true,
 	background = false,
-	update_interval = 10,
+	update_interval = 2,
 	total_run_times = 0,
 	cpu_avg_samples = 5,
 	net_avg_samples = 5,
@@ -32,7 +32,7 @@ conky.config = {
 
 	alignment = 'top_right',
 	gap_x = 16,
-	gap_y = 42,
+	gap_y = 45,
 	maximum_width = 300,
 
 -- Graph
@@ -54,39 +54,43 @@ $alignc Linux ${execi 120 uname -r | sed 's/\-manjaro//i' | sed 's/\-.*//'}-${ex
 #Date $alignr${time %B} ${time %e}, ${time %Y}
 #Users $alignr$user_names ($user_number)
 Uptime $alignr$uptime_short
-Updates $alignr ${execi 30 ((yay --color none -Qu | wc -l) || 0)}
 Procs $alignr$processes ($running_processes running)
 #Battery $alignr${battery_time} ($battery_percent%)
 #Sys $alignr ${execi 2 "~/.dot-files/power-draw.sh"}W
 #Gpu $alignr ${execi 2 nvidia-smi --query-gpu=power.draw --format=csv,noheader,nounits}W
-#Load $alignr$loadavg
-#${cpugraph 26,300 FFFFFF FFFFFF -l}
+Load $alignr$loadavg
+Updates $alignr ${execi 30 ((yay --color none -Qu | wc -l) || 0)}
+${cpugraph 26,300 FFFFFF FFFFFF -l}
 Cpu $alignr${cpu}% (${execi 2 sensors | grep 'Tdie' | cut -c15-17 | sed -E 's/\+//'}°C)
 $alignr${freq_g} GHz
 # (${execi 2 clevo-indicator -h | grep 'FAN RPMs: ' | grep -vi 'process' | cut -c12-20 | sed 's/\s//g'})
 #Pch $alignr${execi 1 sensors | grep -A 2 'pch' | sed -E '/pch|device/d' | cut -c15-17 | sed -E 's/\+//'}°C
 #Fan2 ${alignr}${execi 2 sensors | grep 'fan2' | cut -c14-21}
-#${execigraph 2 "nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader,nounits"}
+${execigraph 2 "nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader,nounits"}
 Gpu $alignr${execi 2 nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader,nounits}% (${execi 2 nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader,nounits}°C)
 $alignr${execi 2 nvidia-smi --query-gpu=memory.used --format=csv,noheader,nounits} M / ${execi 2 nvidia-smi --query-gpu=memory.total --format=csv,noheader,nounits} M
 $alignr${execi 2 nvidia-smi --query-gpu=clocks.gr --format=csv,noheader,nounits} MHz
 #Fans ${alignr}${execi 2 clevo-indicator -h | grep 'FAN Duty: ' | grep -vi 'process' | cut -c12-16 | sed 's/\s//g'}
+
 Mem$alignr$mem / $memmax ($memperc%)
-#${diskiograph 26,300 FFFFFF FFFFFF -l}
+
 #Net $alignr${execi 2 sensors | grep -A 2 'iwlwifi' | sed -E '/wifi|device/d' | cut -c15-17 | sed -E 's/\+//'}°C
-HD ${alignr}${execi 2 cat /tmp/nvme0-temp}°C
+#HD ${alignr}${execi 2 cat /tmp/nvme0-temp}°C
+${diskiograph 26,300 FFFFFF FFFFFF -l}
 Read$alignr${diskio_read}
 Write$alignr${diskio_write}
+Temp$alignr${execi 2 sensors | grep 'Composite' | cut -c15-17 | sed -E 's/\+//'}°C
 Root $alignr${fs_used /}/${fs_size /} (${fs_used_perc /}%)
 Home $alignr${fs_used /home}/${fs_size /home} (${fs_used_perc /home}%)
 Media $alignr${fs_used /mnt/games}/${fs_size /mnt/games} (${fs_used_perc /mnt/games}%)${if_existing /proc/net/route wlp59s0}
 ${upspeedgraph wlp59s0 26,145 FFFFFF FFFFFF}$alignr${downspeedgraph wlp59s0 26,145 FFFFFF FFFFFF}
 Up ${upspeed wlp59s0}${alignr}Down ${downspeed wlp59s0}
 Sent ${totalup wlp59s0}${alignr}Received ${totaldown wlp59s0}${endif}
-${if_existing /proc/net/route enp0s20f0u1}
-${upspeedgraph enp0s20f0u1 26,145 FFFFFF FFFFFF}$alignr${downspeedgraph enp0s20f0u1 26,145 FFFFFF FFFFFF}
-Up ${upspeed enp0s20f0u1}${alignr}Down ${downspeed enp0s20f0u1}
-Sent ${totalup enp0s20f0u1}${alignr}Received ${totaldown enp0s20f0u1}${endif}
+${if_existing /proc/net/route enp3s0f1}
+${upspeedgraph enp3s0f1 26,145 FFFFFF FFFFFF}$alignr${downspeedgraph enp3s0f1 26,145 FFFFFF FFFFFF}
+Up ${upspeed enp3s0f1}${alignr}Down ${downspeed enp3s0f1}
+Sent ${totalup enp3s0f1}${alignr}Received ${totaldown enp3s0f1}${endif}
+
 ${color1}Top$alignr${color1}Cpu %
 ${top_mem name 1}$alignr${top cpu 1} %
 ${top_mem name 2}$alignr${top cpu 2} %
