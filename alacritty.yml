@@ -48,11 +48,10 @@ font:
 # Should display the render timer
 render_timer: false
 
-background_opacity: 0.9
-
 faux_multiplier: 0
 
 window:
+  opacity: 0.9
   padding:
     x: 8
     y: 8
