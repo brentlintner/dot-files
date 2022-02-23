@@ -43,6 +43,7 @@ alias rr="spring rspec"
 alias nbuild="npm run compile -s"
 alias gitk="tig"
 alias gk="tig"
+alias git-config-zs="git config --local user.email brent@zeitspace.com && git config --local commit.gpgsign false"
 alias git-view-merged='git branch --merged | grep -v "\*"'
 alias git-delete-merged='git branch --merged | grep -v "\*" | xargs -n 1 git branch -d'
 alias git-sync="$HOME/.dot-files/bin/git-sync.sh"
@@ -55,6 +56,8 @@ alias grp="grep -rni"
 
 alias sync-gdm-theme="cd /usr/share/themes/mako/gnome-shell && sudo glib-compile-resources --target=/usr/share/gnome-shell/gnome-shell-theme.gresource gnome-shell-theme.gresource.xml && cd -"
 
+alias dk=docker
+alias pd=podman
 alias static-server="python -m http.server 8002"
 alias tlp-mode="sudo tlp stat | grep -iE '^mode'"
 alias cron="crontab"
