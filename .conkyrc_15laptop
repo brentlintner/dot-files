@@ -48,7 +48,7 @@ conky.config = {
 };
 
 conky.text = [[
-$alignc Linux ${execi 120 uname -r | sed 's/\-manjaro//i' | sed 's/\-.*//'}-${execi 120 pacman -Qi coreutils | grep Version | cut -c19-24 | sed 's/\-.*//' | sed 's/\/s*//'}
+$alignc Linux ${execi 3600 uname -r | sed 's/\-manjaro//i' | sed 's/\-.*//'}-${execi 120 pacman -Qi coreutils | grep Version | cut -c19-24 | sed 's/\-.*//' | sed 's/\/s*//'}
 
 #Time $alignr${time %H}:${time %M} EST
 #Date $alignr${time %B} ${time %e}, ${time %Y}
@@ -59,9 +59,9 @@ Procs $alignr$processes ($running_processes running)
 #Sys $alignr ${execi 2 "~/.dot-files/power-draw.sh"}W
 #Gpu $alignr ${execi 2 nvidia-smi --query-gpu=power.draw --format=csv,noheader,nounits}W
 Load $alignr$loadavg
-Updates $alignr ${execi 30 ((yay --color none -Qu | wc -l) || 0)}
+Updates $alignr ${execi 3600 ((yay --color none -Qu | wc -l) || 0)}
 ${cpugraph 26,300 FFFFFF FFFFFF -l}
-Cpu $alignr${cpu}% (${execi 2 sensors | grep 'Tdie' | cut -c15-17 | sed -E 's/\+//'}°C)
+Cpu $alignr${cpu}% (${execi 2 sensors | grep 'Tctl' | cut -c15-17 | sed -E 's/\+//'}°C)
 $alignr${freq_g} GHz
 # (${execi 2 clevo-indicator -h | grep 'FAN RPMs: ' | grep -vi 'process' | cut -c12-20 | sed 's/\s//g'})
 #Pch $alignr${execi 1 sensors | grep -A 2 'pch' | sed -E '/pch|device/d' | cut -c15-17 | sed -E 's/\+//'}°C
@@ -72,11 +72,12 @@ $alignr${execi 2 nvidia-smi --query-gpu=memory.used --format=csv,noheader,nounit
 $alignr${execi 2 nvidia-smi --query-gpu=clocks.gr --format=csv,noheader,nounits} MHz
 #Fans ${alignr}${execi 2 clevo-indicator -h | grep 'FAN Duty: ' | grep -vi 'process' | cut -c12-16 | sed 's/\s//g'}
 
+${memgraph 26,300 FFFFFF FFFFFF}
 Mem$alignr$mem / $memmax ($memperc%)
 
 #Net $alignr${execi 2 sensors | grep -A 2 'iwlwifi' | sed -E '/wifi|device/d' | cut -c15-17 | sed -E 's/\+//'}°C
 #HD ${alignr}${execi 2 cat /tmp/nvme0-temp}°C
-${diskiograph 26,300 FFFFFF FFFFFF -l}
+${diskiograph 26,300 FFFFFF FFFFFF}
 Read$alignr${diskio_read}
 Write$alignr${diskio_write}
 Temp$alignr${execi 2 sensors | grep 'Composite' | cut -c15-17 | sed -E 's/\+//'}°C
@@ -114,4 +115,7 @@ ${top_mem name 7}$alignr${top_mem mem 7} %
 ${top_mem name 8}$alignr${top_mem mem 8} %
 ${top_mem name 9}$alignr${top_mem mem 9} %
 ${top_mem name 10}$alignr${top_mem mem 10} %
+
+Who
+${execi 10 who | sed "s/`date +"%Y-%m-%d"`//g"}
 ]];
