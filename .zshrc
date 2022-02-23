@@ -12,6 +12,7 @@ plugins=(
   heroku
   npm
   asdf
+  docker
 )
 autoload -U compinit && compinit
 source $ZSH/oh-my-zsh.sh
