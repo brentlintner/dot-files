@@ -80,7 +80,7 @@ Mem$alignr$mem / $memmax ($memperc%)
 ${diskiograph 26,300 FFFFFF FFFFFF}
 Read$alignr${diskio_read}
 Write$alignr${diskio_write}
-Temp$alignr${execi 2 sensors | grep 'Composite' | cut -c15-17 | sed -E 's/\+//'}°C
+Temp$alignr${execi 2 sensors | grep -m 1 'Composite' | cut -c15-17 | sed -E 's/\+//'}°C
 Root $alignr${fs_used /}/${fs_size /} (${fs_used_perc /}%)
 Home $alignr${fs_used /home}/${fs_size /home} (${fs_used_perc /home}%)
 Media $alignr${fs_used /mnt/games}/${fs_size /mnt/games} (${fs_used_perc /mnt/games}%)${if_existing /proc/net/route wlp59s0}
@@ -98,11 +98,6 @@ ${top_mem name 2}$alignr${top cpu 2} %
 ${top_mem name 3}$alignr${top cpu 3} %
 ${top_mem name 4}$alignr${top cpu 4} %
 ${top_mem name 5}$alignr${top cpu 5} %
-${top_mem name 6}$alignr${top cpu 6} %
-${top_mem name 7}$alignr${top cpu 7} %
-${top_mem name 8}$alignr${top cpu 8} %
-${top_mem name 9}$alignr${top cpu 9} %
-${top_mem name 10}$alignr${top cpu 10} %
 
 ${color1}Top$alignr${color1}${color1}Mem %
 ${top_mem name 1}$alignr${top_mem mem 1} %
@@ -110,11 +105,6 @@ ${top_mem name 2}$alignr${top_mem mem 2} %
 ${top_mem name 3}$alignr${top_mem mem 3} %
 ${top_mem name 4}$alignr${top_mem mem 4} %
 ${top_mem name 5}$alignr${top_mem mem 5} %
-${top_mem name 6}$alignr${top_mem mem 6} %
-${top_mem name 7}$alignr${top_mem mem 7} %
-${top_mem name 8}$alignr${top_mem mem 8} %
-${top_mem name 9}$alignr${top_mem mem 9} %
-${top_mem name 10}$alignr${top_mem mem 10} %
 
 Who
 ${execi 10 who | sed "s/`date +"%Y-%m-%d"`//g"}
