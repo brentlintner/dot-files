@@ -13,6 +13,7 @@ alias truffles="trufflehog --regex --entropy=False"
 
 alias asdf-update="asdf update && asdf plugin-update --all"
 
+alias aurvote="ssh aur@aur.archlinux.org vote"
 alias sc="systemctl"
 alias sc-units="systemctl list-unit-files"
 alias pacman="pacman --color always"

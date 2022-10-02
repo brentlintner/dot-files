@@ -1,3 +1,4 @@
+export SHELL=zsh
 export GPG_TTY=$(tty)
 
 export LANG=en_CA.UTF-8
