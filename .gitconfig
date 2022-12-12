@@ -56,6 +56,7 @@
 	upload = true
 [push]
 	default = current
+	autoSetupRemote = true
 [core]
 	autocrlf = false
 	pager = less
@@ -65,10 +66,10 @@
 	rebase = true
 [rebase]
 	autoStash = true
+[init]
+	defaultBranch = main
 [filter "lfs"]
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
 	clean = git-lfs clean -- %f
-[init]
-	defaultBranch = main
