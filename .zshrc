@@ -8,28 +8,26 @@ ZSH_THEME="brent"
 
 HEROKU_AC_ZSH_SETUP_PATH=/home/brent/.cache/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH
 
+fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 plugins=(
-  zsh-completions # https://github.com/zsh-users/zsh-completions
   zsh-autosuggestions
+  zsh-completions
   git
   heroku
   npm
   asdf
   docker
 )
-#fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
-autoload -U compinit && compinit
+
 source $ZSH/oh-my-zsh.sh
 
-if [ -e $HOME/.asdf/asdf.sh ]; then
-  . $HOME/.asdf/asdf.sh
-fi
-
-if [ -d /opt/asdf-vm ]; then
-  . /opt/asdf-vm/asdf.sh
+if [ ! -z $HOME/.dot-files/npm-completion ]; then
+  npm completion > $HOME/.dot-files/npm-completion
 fi
 
 source $HOME/.dot-files/sh-env.sh
 source $HOME/.dot-files/sh-aliases.sh
 
-eval `keychain --quiet --eval --agents ssh id_rsa`
+if [ -x "$(command -v keychain)" ]; then
+	eval `keychain --quiet --eval --agents ssh id_rsa`
+fi

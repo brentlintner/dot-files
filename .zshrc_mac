@@ -1,8 +1,23 @@
+. /opt/homebrew/opt/asdf/libexec/asdf.sh
+
+export PATH=/opt/homebrew/bin:$PATH
+
+export PATH=/opt/homebrew/sbin:$PATH
+
+export PATH="$PATH:/Users/brent/.dotnet/tools"
+
+export JAVA_HOME="/Applications/Android Studio.app/Contents/jbr/Contents/Home"
+
+export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+
+if type brew &>/dev/null
+then
+  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+
+  autoload -Uz compinit
+  compinit
+fi
+
 source $HOME/.dot-files/.zshrc
-
-# homebrew prefers usr/local before usr
-export PATH=/usr/local/bin:$PATH
-
-export PATH="/Applications/Postgres.app/Contents/Versions/9.3/bin:$PATH"
 
 source $HOME/.dot-files/sh-aliases-osx.sh

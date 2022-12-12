@@ -1,11 +1,10 @@
 [user]
 	name = Brent Lintner
 	email = brent.lintner@gmail.com
-	signingkey = 0A6548DF66174277
 
 [commit]
 	template = ~/.gitmessage
-	gpgsign = true
+	gpgsign = false
 
 [merge]
 	keepbackup = false

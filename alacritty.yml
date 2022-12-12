@@ -8,7 +8,7 @@ env:
 tabspaces: 8
 
 mouse:
-  hide_when_typing: false
+  hide_when_typing: true
 
 draw_bold_text_with_bright_colors: false
 
@@ -22,7 +22,7 @@ font:
   italic:
     family: "Hack Nerd Font Mono"
     style: Italic
-  size: 12.0
+  size: 14.0
 
 render_timer: false
 
@@ -30,7 +30,7 @@ faux_multiplier: 0
 
 window:
   decorations: buttonless
-  opacity: 0.95
+  opacity: 0.89
   dimensions:
     columns: 145
     lines: 40
@@ -139,6 +139,7 @@ schemes:
 colors: *everforest_dark_custom
 
 key_bindings:
+  - { key: W,        mods: Command, action: None                         }
   - { key: V,        mods: Command, action: Paste                        }
   - { key: C,        mods: Command, action: Copy                         }
   - { key: Home,                    chars: "\x1b[H",   mode: ~AppCursor  }
@@ -188,9 +189,9 @@ key_bindings:
 mouse_bindings:
   - { mouse: Middle, action: PasteSelection }
 
-shell:
-  program: /bin/zsh
-  args:
-    - -l
-    - -c
-    - "tmux"
+shell: /opt/homebrew/bin/tmux
+  #program: /bin/zsh
+  #args:
+    #- -l
+    #- -c
+    #- "/opt/homebrew/bin/tmux"

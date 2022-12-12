@@ -3,12 +3,11 @@ export GPG_TTY=$(tty)
 
 export LANG=en_CA.UTF-8
 export LC_ALL=en_US.UTF-8
-export ARCHFLAGS="-arch x86_64"
-export SSH_KEY_PATH="~/.ssh/id_rsa"
+
+export ARCHFLAGS="-arch `uname -m`"
+export SSH_KEY_PATH="~/.ssh/id_ed25519"
 
 export PAGER="most"
-
-export GTK_THEME=mako
 
 export HEROKU_NOTIFICATIONS=0
 
@@ -19,11 +18,10 @@ export PGROOT=/var/lib/postgres
 
 export BROWSER=chromium
 
-export ANDROID_EMULATOR_USE_SYSTEM_LIBS=1
-export ANDROID_HOME=$HOME/Android/Sdk
+#export ANDROID_EMULATOR_USE_SYSTEM_LIBS=1
+export ANDROID_HOME=$HOME/Library/Android/sdk
 export PATH=$PATH:$ANDROID_HOME/emulator
-export PATH=$PATH:$ANDROID_HOME/tools
-export PATH=$PATH:$ANDROID_HOME/tools/bin
+export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 
 export NODE_REPL_HISTORY_FILE="$HOME/.node-repl-history"

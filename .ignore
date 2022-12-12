@@ -1,2 +1,11 @@
+node_modules
+deployment
+vendor
+coverage
+dist
+build
+tmp
 yarn.lock
 package-lock.json
+Gemfile.lock
+.git
