@@ -4,10 +4,10 @@ alias t="npm -s t"
 alias xo="xdg-open"
 alias v="vim"
 alias choco="choco.exe"
+alias tree="tree -C"
 
 alias plex-start="sudo systemctl enable --now plexmediaserver.service"
 alias plex-stop="sudo systemctl disable --now plexmediaserver.service"
-alias ncu="npm-check-updates"
 
 alias truffles="trufflehog --regex --entropy=False"
 
@@ -45,8 +45,8 @@ alias nbuild="npm run compile -s"
 alias gitk="tig"
 alias gk="tig"
 alias git-config-zs="git config --local user.email brent@zeitspace.com && git config --local commit.gpgsign false"
-alias git-view-merged='git branch --merged | grep -v "\*"'
-alias git-delete-merged='git branch --merged | grep -v "\*" | xargs -n 1 git branch -d'
+alias git-view-merged='git branch --merged | grep -v main | grep -v dev | grep -v "\*"'
+alias git-delete-merged='git branch --merged | grep -v "main" | grep -v "dev" | grep -v "staging" | grep -v "\*" | xargs git branch -d'
 alias git-sync="$HOME/.dot-files/bin/git-sync.sh"
 alias git-ignore="git update-index --assume-unchanged"
 alias git-unignore="git update-index --no-assume-unchanged"
@@ -68,12 +68,10 @@ alias mk="mkdir"
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
-alias ll='ls -lh --color=auto'
+alias ll='ls -lh --color=always'
 alias la='ls -lah --color=auto'
 alias ls='ls --color=auto'
-alias du='ncdu'
-alias duu='/usr/bin/du'
-alias find='fd'
+#alias find='fd'
 alias mann='/usr/bin/man'
 alias man='tldr'
 

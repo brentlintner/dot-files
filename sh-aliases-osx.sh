@@ -1,4 +1,5 @@
 unalias ls
 unalias la
-alias ll='ls -l'
-alias la='ls -lA'
+#alias docker=podman
+alias ll='ls -l --color=auto'
+alias la='ls -lA --color=auto'
