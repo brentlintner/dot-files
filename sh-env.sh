@@ -27,7 +27,6 @@ export PATH=$PATH:$ANDROID_HOME/platform-tools
 
 export NODE_REPL_HISTORY_FILE="$HOME/.node-repl-history"
 export N_PREFIX=$HOME
-export TERM=xterm-256color
 export VISUAL=nvim
 export EDITOR=nvim
 
