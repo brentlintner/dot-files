@@ -1,10 +1,13 @@
 # Configuration for Alacritty, the GPU enhanced terminal emulator
 
+env:
+  TERM: xterm-256color
+
 # The FreeType rasterizer needs to know the device DPI for best results
 # (changes require restart)
-dpi:
-  x: 96.0
-  y: 96.0
+#dpi:
+  #x: 82.0
+  #y: 82.0
 
 # Display tabs using this many cells (changes require restart)
 tabspaces: 8
@@ -21,29 +24,24 @@ font:
   normal:
     family: Hack # should be "Menlo" or something on macOS.
     # Style can be specified to pick a specific face.
-    # style: Regular
+    style: Regular
 
   # The bold font face
   bold:
     family: Hack # should be "Menlo" or something on macOS.
     # Style can be specified to pick a specific face.
-    # style: Bold
+    style: Bold
 
   # The italic font face
   italic:
     family: Hack # should be "Menlo" or something on macOS.
     # Style can be specified to pick a specific face.
-    # style: Italic
+    style: Italic
 
   # Point size of the font
-  size: 10.0
+  size: 14.0
   # Offset is the extra space around each character. offset.y can be thought of
   # as modifying the linespacing, and offset.x as modifying the letter spacing.
-
-  # OS X only: use thin stroke font rendering. Thin strokes are suitable
-  # for retina displays, but for non-retina you probably want this set to
-  # false.
-  use_thin_strokes: true
 
 # Should display the render timer
 render_timer: false
@@ -51,71 +49,119 @@ render_timer: false
 faux_multiplier: 0
 
 window:
-  dimensions:
-    columns: 133
-    lines: 40
   opacity: 0.95
+  dimensions:
+    columns: 145
+    lines: 40
   padding:
     x: 8
     y: 8
 
-# Colors (Tomorrow Night Bright)
-colors:
-  # Default colors
-  primary:
-    background: '0x1e1e1e'
-    foreground: '0xeaeaea'
+schemes:
+  tomorrow_night_bright: &tomorrow_night_bright
+    # Default colors
+    primary:
+      background: '0x1e1e1e'
+      foreground: '0xeaeaea'
 
-  # Normal colors
-  normal:
-    black:   '0x000000'
-    red:     '0xd54e53'
-    green:   '0xb9ca4a'
-    yellow:  '0xe6c547'
-    blue:    '0x7aa6da'
-    magenta: '0xc397d8'
-    cyan:    '0x70c0ba'
-    white:   '0x424242'
+    # Normal colors
+    normal:
+      black:   '0x000000'
+      red:     '0xd54e53'
+      green:   '0xb9ca4a'
+      yellow:  '0xe6c547'
+      blue:    '0x7aa6da'
+      magenta: '0xc397d8'
+      cyan:    '0x70c0ba'
+      white:   '0x424242'
 
-  # Bright colors
-  bright:
-    black:   '0x666666'
-    red:     '0xff3334'
-    green:   '0x9ec400'
-    yellow:  '0xe7c547'
-    blue:    '0x7aa6da'
-    magenta: '0xb77ee0'
-    cyan:    '0x54ced6'
-    white:   '0x2a2a2a'
+    # Bright colors
+    bright:
+      black:   '0x666666'
+      red:     '0xff3334'
+      green:   '0x9ec400'
+      yellow:  '0xe7c547'
+      blue:    '0x7aa6da'
+      magenta: '0xb77ee0'
+      cyan:    '0x54ced6'
+      white:   '0x2a2a2a'
+  tender: &tender
+    # Default colors
+    primary:
+      #background: '0x282828'
+      #foreground: '0xeeeeee'
+      background: '#1e1e1e'
+      foreground: '#dfdfdf'
 
-# Colors (Solarized Dark)
-# colors:
-#   # Default colors
-#   primary:
-#     background: '0x002b36'
-#     foreground: '0x839496'
-#
-#   # Normal colors
-#   normal:
-#     black:   '0x073642'
-#     red:     '0xdc322f'
-#     green:   '0x859900'
-#     yellow:  '0xb58900'
-#     blue:    '0x268bd2'
-#     magenta: '0xd33682'
-#     cyan:    '0x2aa198'
-#     white:   '0xeee8d5'
-#
-#   # Bright colors
-#   bright:
-#     black:   '0x002b36'
-#     red:     '0xcb4b16'
-#     green:   '0x586e75'
-#     yellow:  '0x657b83'
-#     blue:    '0x839496'
-#     magenta: '0x6c71c4'
-#     cyan:    '0x93a1a1'
-#     white:   '0xfdf6e3'
+    # Normal colors
+    normal:
+      black:   '0x282828'
+      red:     '0xf43753'
+      green:   '0xc9d05c'
+      yellow:  '0xffc24b'
+      blue:    '0xb3deef'
+      magenta: '0xd3b987'
+      cyan:    '0x73cef4'
+      white:   '0xeeeeee'
+
+    # Bright colors
+    bright:
+      black:   '0x4c4c4c'
+      red:     '0xf43753'
+      green:   '0xc9d05c'
+      yellow:  '0xffc24b'
+      blue:    '0xb3deef'
+      magenta: '0xd3b987'
+      cyan:    '0x73cef4'
+      white:   '0xfeffff'
+
+  everforest_dark_custom: &everforest_dark_custom
+    primary:
+      background: '#1e1e1e'
+      foreground: '#dfdfdf'
+    normal:
+      black:   '#4b565c'
+      red:     '#e67e80'
+      green:   '#a7c080'
+      yellow:  '#dbbc7f'
+      blue:    '#7fbbb3'
+      magenta: '#d699b6'
+      cyan:    '#83c092'
+      white:   '#d3c6aa'
+    bright:
+      black:   '#4b565c'
+      red:     '#e67e80'
+      green:   '#a7c080'
+      yellow:  '#dbbc7f'
+      blue:    '#7fbbb3'
+      magenta: '#d699b6'
+      cyan:    '#83c092'
+      white:   '#d3c6aa'
+
+  everforest_dark_soft: &everforest_dark_soft
+    primary:
+      background: '#323d43'
+      foreground: '#d3c6aa'
+    normal:
+      black:   '#4b565c'
+      red:     '#e67e80'
+      green:   '#a7c080'
+      yellow:  '#dbbc7f'
+      blue:    '#7fbbb3'
+      magenta: '#d699b6'
+      cyan:    '#83c092'
+      white:   '#d3c6aa'
+    bright:
+      black:   '#4b565c'
+      red:     '#e67e80'
+      green:   '#a7c080'
+      yellow:  '#dbbc7f'
+      blue:    '#7fbbb3'
+      magenta: '#d699b6'
+      cyan:    '#83c092'
+      white:   '#d3c6aa'
+
+colors: *everforest_dark_custom
 
 # Key bindings
 #
@@ -190,7 +236,7 @@ key_bindings:
   - { key: Back,                    chars: "\x7f"                        }
   - { key: Delete,                  chars: "\x1b[3~",  mode: AppKeypad   }
   - { key: Delete,                  chars: "\x1b[P",   mode: ~AppKeypad  }
-  - { key: F11, action: ToggleFullscreen }
+  - { key: F10, action: ToggleFullscreen }
 
 # Mouse bindings
 #
@@ -209,7 +255,6 @@ key_bindings:
 # - Copy (TODO)
 mouse_bindings:
   - { mouse: Middle, action: PasteSelection }
-
 
 # Shell
 #
