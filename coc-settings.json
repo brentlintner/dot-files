@@ -1,4 +1,16 @@
 {
   "coc.preferences.extensionUpdateCheck": "never",
-  "vetur.ignoreProjectWarning": true
+  "vetur.ignoreProjectWarning": true,
+  "suggest.floatConfig": {
+    "border": false
+  },
+  "diagnostic.floatConfig": {
+    "border": false
+  },
+  "signature.floatConfig": {
+    "border": false
+  },
+  "hover.floatConfig": {
+    "border": false
+  }
 }
