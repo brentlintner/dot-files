@@ -92,7 +92,7 @@ schemes:
   everforest_dark_custom: &everforest_dark_custom
     primary:
       background: '#1e1e1e'
-      foreground: '#eeeeee'
+      foreground: '#dcdcdc'
     normal:
       black:   '#4b565c'
       red:     '#e67e80'
