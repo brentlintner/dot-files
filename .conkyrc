@@ -52,7 +52,6 @@ conky.text = [[
 System $alignr$nodename@${execi 120 uname -r | sed 's/\-manjaro//i'}
 Time $alignr${time %H}:${time %M} EST
 Date $alignr${time %B} ${time %e}, ${time %Y}
-Users $alignr$user_names ($user_number)
 Uptime $alignr$uptime_short
 Procs $alignr$processes ($running_processes running)
 ${if_existing $battery_time}

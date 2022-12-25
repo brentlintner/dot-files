@@ -6,14 +6,11 @@ export IGNOREEOF=42
 export ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="brent"
 
-if [ -d /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then
-	source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-fi
-
 HEROKU_AC_ZSH_SETUP_PATH=/home/brent/.cache/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH
 
 plugins=(
-  # zsh-completions # https://github.com/zsh-users/zsh-completions
+  zsh-completions # https://github.com/zsh-users/zsh-completions
+  zsh-autosuggestions
   git
   heroku
   npm
