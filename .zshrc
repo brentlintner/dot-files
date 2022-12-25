@@ -10,6 +10,8 @@ if [ -d /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh ]; th
 	source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 fi
 
+HEROKU_AC_ZSH_SETUP_PATH=/home/brent/.cache/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH
+
 plugins=(
   # zsh-completions # https://github.com/zsh-users/zsh-completions
   git
