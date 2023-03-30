@@ -5,6 +5,7 @@ alias xo="xdg-open"
 alias v="vim"
 alias choco="choco.exe"
 alias tree="tree -C"
+alias mg="mv"
 
 alias plex-start="sudo systemctl enable --now plexmediaserver.service"
 alias plex-stop="sudo systemctl disable --now plexmediaserver.service"
@@ -54,6 +55,8 @@ alias g="git s"
 alias gl="git l"
 alias gpr="hub pull-request"
 alias grp="grep -rni"
+alias fl="flutter"
+alias flr="flutter run --no-pub --no-enable-dart-profiling"
 
 alias sync-gdm-theme="cd /usr/share/themes/mako/gnome-shell && sudo glib-compile-resources --target=/usr/share/gnome-shell/gnome-shell-theme.gresource gnome-shell-theme.gresource.xml && cd -"
 
