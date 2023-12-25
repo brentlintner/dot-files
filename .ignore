@@ -2,6 +2,19 @@ node_modules
 deployment
 vendor
 coverage
+coverage_js
+android/build
+assets/builds
+app/build
+.tscache
+.cabal-sandbox
+.keep
+.docs
+.test
+log
+public/assets
+.idea
+.gradle
 dist
 build
 tmp
@@ -9,3 +22,7 @@ yarn.lock
 package-lock.json
 Gemfile.lock
 .git
+.svn
+vim/bundle
+.DS_STORE
+LICENSE
