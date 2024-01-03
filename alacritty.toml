@@ -1,14 +1,33 @@
 import = [
-    "~/.config/alacritty/alacritty-everforest.toml"
+    "~/.config/alacritty/themes/custom/everforest.toml"
 ]
 
 shell = "/opt/homebrew/bin/tmux"
 
 [colors]
-draw_bold_text_with_bright_colors = false
+draw_bold_text_with_bright_colors = true
 
 [env]
 TERM = "xterm-256color"
+
+[window]
+decorations = "buttonless"
+opacity = 0.9
+
+[window.dimensions]
+columns = 145
+lines = 40
+
+[window.padding]
+x = 8
+y = 8
+
+[mouse]
+hide_when_typing = true
+
+[[mouse.bindings]]
+action = "PasteSelection"
+mouse = "Middle"
 
 [font]
 size = 14.0
@@ -238,22 +257,3 @@ mode = "~AppKeypad"
 [[keyboard.bindings]]
 action = "ToggleFullscreen"
 key = "F10"
-
-[mouse]
-hide_when_typing = true
-
-[[mouse.bindings]]
-action = "PasteSelection"
-mouse = "Middle"
-
-[window]
-decorations = "buttonless"
-opacity = 0.89
-
-[window.dimensions]
-columns = 145
-lines = 40
-
-[window.padding]
-x = 8
-y = 8
