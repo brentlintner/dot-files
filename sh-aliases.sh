@@ -81,8 +81,8 @@ alias mann='/usr/bin/man'
 alias man='tldr'
 
 alias confirm="$HOME/.dot-files/bin/confirm"
-alias for-each="$HOME/.dot-files/bin/for-each"
-alias for-all="$HOME/.dot-files/bin/for-all"
+alias for-i="$HOME/.dot-files/bin/for-x"
+alias replace-all="$HOME/.dot-files/bin/replace-all"
 alias git-for-each="$HOME/.dot-files/bin/git-for-each"
 alias backup-user="deja-dup --backup"
 alias backup-path="$HOME/.dot-files/bin/backup"

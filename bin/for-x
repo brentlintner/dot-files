@@ -1,0 +1,13 @@
+#!/usr/bin/env sh
+
+set -e
+
+tries=$1
+
+shift
+
+for i in $(seq 1 $tries)
+do
+	echo "Try #$i"
+	eval "$@"
+done
